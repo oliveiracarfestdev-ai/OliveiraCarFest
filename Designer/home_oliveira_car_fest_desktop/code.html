@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Oliveira Car Fest - Precision Meets Passion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#1a1c1c",
+                        "on-surface-variant": "#e3bfb1",
+                        "on-tertiary": "#313030",
+                        "on-error": "#690005",
+                        "primary": "#ffb596",
+                        "secondary-container": "#474746",
+                        "outline-variant": "#5a4136",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#282a2b",
+                        "primary-container": "#ff6600",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-bright": "#38393a",
+                        "surface-container-lowest": "#0d0f0f",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary-fixed": "#360f00",
+                        "on-surface": "#e2e2e2",
+                        "on-secondary-container": "#b7b5b4",
+                        "surface": "#121414",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#c8c6c5",
+                        "on-tertiary-container": "#2f2f2f",
+                        "outline": "#aa8a7d",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "primary-fixed-dim": "#ffb596",
+                        "on-background": "#e2e2e2",
+                        "surface-tint": "#ffb596",
+                        "surface-container": "#1e2020",
+                        "on-primary": "#581e00",
+                        "tertiary": "#c9c6c5",
+                        "surface-container-highest": "#333535",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#7c2e00",
+                        "background": "#121414",
+                        "surface-dim": "#121414",
+                        "on-secondary-fixed": "#1b1b1c",
+                        "tertiary-container": "#989696",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "inverse-primary": "#a33e00",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "inverse-on-surface": "#2f3131",
+                        "primary-fixed": "#ffdbcd",
+                        "on-secondary": "#303030",
+                        "inverse-surface": "#e2e2e2",
+                        "on-primary-container": "#561d00",
+                        "surface-variant": "#333535"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "lg": "48px",
+                        "margin-desktop": "64px",
+                        "md": "24px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "xs": "4px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Montserrat"],
+                        "label-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "700" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+                        "headline-lg-mobile": ["36px", { "lineHeight": "1.2", "fontWeight": "800" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(30, 32, 32, 0.6); /* surface-container with opacity */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Interactive glow */
+        .glow-hover:hover {
+            box-shadow: 0 0 40px rgba(255, 102, 0, 0.15); /* primary-container */
+        }
+        
+        /* Metallic gradient for buttons/accents */
+        .metallic-bg {
+            background: linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
+        }
+        
+        /* Clip paths for aggressive styling */
+        .clip-corner {
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen flex flex-col overflow-x-hidden selection:bg-primary-container selection:text-black">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 flex justify-between items-center px-margin-desktop py-4 max-w-full z-50 transition-transform duration-300" id="mainNav">
+<div class="flex items-center gap-base">
+<a class="font-headline-md text-headline-md font-black text-primary italic tracking-tighter" href="#">OLIVEIRA CAR FEST</a>
+</div>
+<div class="hidden md:flex gap-gutter items-center">
+<!-- Active state logic: Primary page intent is Home -->
+<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md uppercase tracking-wider scale-95 active:opacity-80" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider hover:bg-primary/10 transition-all duration-300 p-2 scale-95 active:opacity-80" href="#">Eventos</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider hover:bg-primary/10 transition-all duration-300 p-2 scale-95 active:opacity-80" href="#">Galeria</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider hover:bg-primary/10 transition-all duration-300 p-2 scale-95 active:opacity-80" href="#">Patrocinadores</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider hover:bg-primary/10 transition-all duration-300 p-2 scale-95 active:opacity-80" href="#">Sobre</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider hover:bg-primary/10 transition-all duration-300 p-2 scale-95 active:opacity-80" href="#">Contato</a>
+</div>
+<div class="flex items-center gap-base">
+<button class="hidden md:flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors p-2">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="bg-primary-container text-black font-label-md text-label-md uppercase tracking-wider px-6 py-2 clip-corner hover:bg-primary transition-colors">
+                LOGIN
+            </button>
+<button class="md:hidden text-on-surface p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[80px]">
+<!-- Hero Section -->
+<section class="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<div class="bg-cover bg-center w-full h-full object-cover" data-alt="A striking high-contrast digital photograph of a sleek, aggressive supercar parked on a wet, reflective tarmac at night. The scene is illuminated by dramatic, sharp neon lighting cutting through deep shadows, creating a high-end showroom atmosphere. Deep blacks and vibrant orange accents dominate the color palette, embodying precision engineering and automotive velocity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDsHAUm3jb1CUHtL7j1CMyxfol1603KyzuGkVQ5QwU5HOkJ25nzkuWyH61Kx_43Kg-ZvQhSxZ9L_GRUJFoQoX1JaQYpdAaI7xfJY8Yzi0UI5Ae9hrlOl8LKGnKShqHpO7M3PU8WSFAtaWm8FbDD23CYmglIfwm-DldXxypbbykhUvC1S8FyB9cjinKyIFKlhd2H_iI9DPzRTn0TatHFT6J28W8gsKybS8vgF9jQg19cKGZCvcTJDIwGtg')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background z-10"></div>
+</div>
+<div class="relative z-20 w-full px-margin-mobile md:px-margin-desktop text-center md:text-left flex flex-col md:items-start items-center max-w-7xl mx-auto">
+<div class="glass-panel p-md border-l-4 border-primary-container inline-block mb-lg">
+<span class="font-label-md text-label-md uppercase text-primary tracking-widest">A Convergência de Engenharia e Estilo</span>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-surface uppercase mb-md leading-none">
+                    PRECISION<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-primary">MEETS PASSION</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-xl md:mb-lg hidden md:block">
+                    A experiência automotiva definitiva. Exclusividade, performance e design convergem em eventos curados para os verdadeiros entusiastas e colecionadores.
+                </p>
+<button class="bg-primary-container text-black font-label-md text-label-md uppercase tracking-wider px-xl py-md clip-corner hover:bg-primary transition-all glow-hover flex items-center gap-2 group">
+<span>EXPLORAR EVENTOS</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-xl left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-xs opacity-50 animate-bounce">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Scroll</span>
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</section>
+<!-- Next Event / Countdown -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-low border-y border-outline-variant/20">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-lg items-center">
+<div>
+<div class="inline-block bg-primary-container/20 text-primary px-sm py-xs border border-primary-container/50 font-label-sm text-label-sm uppercase mb-md">
+                        Próximo Evento Oficial
+                    </div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface uppercase mb-sm">Circuito de<br/>Mônaco</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">O ápice do automobilismo europeu recebe a edição mais exclusiva do Oliveira Car Fest. Acesso restrito a VIPs e veículos homologados.</p>
+<div class="flex items-center gap-sm text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span>Monte Carlo, Mônaco</span>
+<span class="text-outline-variant mx-2">|</span>
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<span>24-26 Maio, 2025</span>
+</div>
+</div>
+<div class="glass-panel p-lg clip-corner border border-surface-container-highest flex flex-col items-center justify-center">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-md">T-Minus</span>
+<div class="grid grid-cols-4 gap-sm text-center">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">14</span>
+<span class="font-label-sm text-label-sm text-outline">DIAS</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">08</span>
+<span class="font-label-sm text-label-sm text-outline">HORAS</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">45</span>
+<span class="font-label-sm text-label-sm text-outline">MIN</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">12</span>
+<span class="font-label-sm text-label-sm text-outline">SEG</span>
+</div>
+</div>
+<button class="mt-lg w-full bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md uppercase py-sm hover:bg-surface-variant hover:text-primary transition-colors">
+                        Solicitar Acesso
+                    </button>
+</div>
+</div>
+</section>
+<!-- Community Stats Grid -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-base">
+<div class="bg-surface-container-high p-lg border border-surface-container-highest flex flex-col items-center text-center group glow-hover transition-all">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-md">directions_car</span>
+<span class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">2.5K+</span>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-widest mt-xs">Carros Registrados</span>
+</div>
+<div class="bg-surface-container-high p-lg border border-surface-container-highest flex flex-col items-center text-center group glow-hover transition-all">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-md">flag</span>
+<span class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">48</span>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-widest mt-xs">Eventos Realizados</span>
+</div>
+<div class="bg-surface-container-high p-lg border border-surface-container-highest flex flex-col items-center text-center group glow-hover transition-all">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-md">public</span>
+<span class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">150K</span>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-widest mt-xs">Seguidores Globais</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest mt-xl w-full border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-xl w-full max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-2 flex flex-col justify-between">
+<div class="font-headline-sm text-headline-sm font-black text-primary italic mb-md">OLIVEIRA CAR FEST</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-lg">
+                    A plataforma definitiva para a cultura automotiva de alto desempenho.
+                </p>
+<div class="font-body-md text-body-md text-on-surface-variant">
+                    © 2024 OLIVEIRA CAR FEST. ENGINEERED FOR EXCELLENCE.
+                </div>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md uppercase text-on-surface mb-sm">Links Úteis</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200" href="#">Termos de Uso</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200" href="#">Privacidade</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200" href="#">FAQ</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200" href="#">Imprensa</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md uppercase text-on-surface mb-sm">Redes Sociais</h4>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">play_circle</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">chat</span></a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll effect for navbar
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg', 'bg-surface/95');
+                nav.classList.remove('bg-surface/80');
+            } else {
+                nav.classList.remove('shadow-lg', 'bg-surface/95');
+                nav.classList.add('bg-surface/80');
+            }
+        });
+    </script>
+</body></html>

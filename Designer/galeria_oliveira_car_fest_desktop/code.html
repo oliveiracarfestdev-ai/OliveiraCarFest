@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Galeria - Oliveira Car Fest</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#1a1c1c",
+                        "on-surface-variant": "#e3bfb1",
+                        "on-tertiary": "#313030",
+                        "on-error": "#690005",
+                        "primary": "#ffb596",
+                        "secondary-container": "#474746",
+                        "outline-variant": "#5a4136",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#282a2b",
+                        "primary-container": "#ff6600",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-bright": "#38393a",
+                        "surface-container-lowest": "#0d0f0f",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary-fixed": "#360f00",
+                        "on-surface": "#e2e2e2",
+                        "on-secondary-container": "#b7b5b4",
+                        "surface": "#121414",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#c8c6c5",
+                        "on-tertiary-container": "#2f2f2f",
+                        "outline": "#aa8a7d",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "primary-fixed-dim": "#ffb596",
+                        "on-background": "#e2e2e2",
+                        "surface-tint": "#ffb596",
+                        "surface-container": "#1e2020",
+                        "on-primary": "#581e00",
+                        "tertiary": "#c9c6c5",
+                        "surface-container-highest": "#333535",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#7c2e00",
+                        "background": "#121414",
+                        "surface-dim": "#121414",
+                        "on-secondary-fixed": "#1b1b1c",
+                        "tertiary-container": "#989696",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "inverse-primary": "#a33e00",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "inverse-on-surface": "#2f3131",
+                        "primary-fixed": "#ffdbcd",
+                        "on-secondary": "#303030",
+                        "inverse-surface": "#e2e2e2",
+                        "on-primary-container": "#561d00",
+                        "surface-variant": "#333535"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "lg": "48px",
+                        "margin-desktop": "64px",
+                        "md": "24px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "xs": "4px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Montserrat"],
+                        "label-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "700" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+                        "headline-lg-mobile": ["36px", { "lineHeight": "1.2", "fontWeight": "800" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0a0a0a;
+            color: #e2e2e2;
+        }
+        
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 24px;
+        }
+        
+        @media (min-width: 768px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 24px;
+        }
+
+        .glass-card {
+            background: rgba(31, 31, 31, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(42, 42, 42, 0.8);
+            border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-glow {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 40px rgba(255, 102, 0, 0.15);
+            transform: translateY(-4px);
+            border-color: rgba(255, 102, 0, 0.3);
+        }
+        
+        .img-overlay {
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0) 50%);
+        }
+
+        .btn-primary {
+            background-color: #ff6600;
+            color: #0a0a0a;
+            clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #ffb596;
+            transform: scale(1.02);
+        }
+
+        .filter-btn {
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            border-bottom-color: #ff6600;
+            color: #ffb596;
+        }
+        
+        .filter-btn:hover:not(.active) {
+            color: #ffb596;
+            border-bottom-color: rgba(255, 102, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 flex justify-between items-center px-margin-desktop py-4 max-w-full">
+<a class="font-headline-md text-headline-md font-black text-primary italic tracking-tighter" href="#">
+            OLIVEIRA CAR FEST
+        </a>
+<nav class="hidden md:flex gap-gutter items-center">
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:bg-primary/10 transition-all duration-300 px-3 py-2 rounded-DEFAULT" href="#">Home</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:bg-primary/10 transition-all duration-300 px-3 py-2 rounded-DEFAULT" href="#">Eventos</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-primary border-b-2 border-primary pb-1 hover:bg-primary/10 transition-all duration-300 px-3 py-2 rounded-DEFAULT" href="#">Galeria</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:bg-primary/10 transition-all duration-300 px-3 py-2 rounded-DEFAULT" href="#">Patrocinadores</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:bg-primary/10 transition-all duration-300 px-3 py-2 rounded-DEFAULT" href="#">Sobre</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:bg-primary/10 transition-all duration-300 px-3 py-2 rounded-DEFAULT" href="#">Contato</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="font-label-md text-label-md uppercase tracking-wider text-primary hover:bg-primary/10 transition-all duration-300 px-4 py-2 scale-95 active:opacity-80 rounded-DEFAULT">
+                LOGIN
+            </button>
+<button class="text-primary hover:bg-primary/10 transition-all duration-300 p-2 scale-95 active:opacity-80 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">directions_car</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-[100px] pb-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto w-full">
+<!-- Header Section -->
+<section class="mb-lg pt-lg text-center md:text-left">
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg font-black text-on-surface uppercase mb-sm">
+                NIGHT <span class="text-primary-container">RUNNERS</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                A raw, unfiltered look at underground car culture. High-octane moments captured in the urban midnight, featuring the machines that rule the streets when the city sleeps.
+            </p>
+</section>
+<!-- Filters -->
+<section class="mb-lg flex flex-wrap gap-4 md:gap-gutter justify-center md:justify-start">
+<button class="filter-btn active font-label-md text-label-md uppercase pb-1 px-2">All</button>
+<button class="filter-btn text-on-surface-variant font-label-md text-label-md uppercase pb-1 px-2">Low &amp; Slow</button>
+<button class="filter-btn text-on-surface-variant font-label-md text-label-md uppercase pb-1 px-2">Performance</button>
+<button class="filter-btn text-on-surface-variant font-label-md text-label-md uppercase pb-1 px-2">Classics</button>
+</section>
+<!-- Masonry Grid -->
+<section class="masonry-grid w-full">
+<!-- Item 1 -->
+<div class="masonry-item relative group overflow-hidden bg-surface-container-low rounded-DEFAULT border border-outline-variant/30 hover-glow">
+<img class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A cinematic, low-angle shot of a heavily modified Japanese sports car parked under flickering neon streetlights in a wet, gritty urban alleyway at night. The high-contrast modernism style features deep infinite blacks contrasting with vibrant neon reflections on the slick carbon fiber hood. Aggressive stance, glowing taillights casting a subtle orange glow. Premium automotive photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmmosEMsGJsTHNtmEwQ67z3oSBGloJRhJpcphq8yuC4WSyFlbkWUgsNuF9h7wT1rXxKJ0Z9gLV7dTDJLBYNmKNOrmaUW9RWZ2z6YTkd-qgcvdyYG8zXfsJCT9Jhx-01q1pQQuShREFl8LpTvVWpUNQGSBYpJuOIiD-DqHKqNzVGXWtzsh4GPTPLLQ6Fq-_NZDW5H7WB6d3DhzLPNGZMjtNes6IcaIHBPGkWxLteBR9wE68NGj74xl5aA"/>
+<div class="absolute inset-0 img-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-md">
+<span class="font-label-sm text-label-sm uppercase text-primary-container mb-xs">Performance</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Midnight Touge</h3>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 16px;">photo_camera</span>
+<span class="font-body-md text-label-sm text-on-surface-variant uppercase">By J. Silva</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="masonry-item relative group overflow-hidden bg-surface-container-low rounded-DEFAULT border border-outline-variant/30 hover-glow">
+<img class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A highly detailed close-up shot of a massive, polished turbocharger inside an engine bay of a tuned drift car. The lighting is dramatic, dark, and moody, highlighting the intricate metallic textures, braided lines, and burnt titanium exhaust piping. Shot in a high-end garage setting with deep blacks and sharp reflections. Cinematic, mechanical precision, aggressive automotive engineering aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBW2SlOGClzmVgOTO-OKUSEN941NSFqGQr3JmWxG2BKmCq-hjp3n7A3m29xCFRCyCUZi4ewROWdJ-V5jm7O_VTrFIvZPDsK4ecwPP452hQoXwqa9FnMjKp1XjFndSr1hbbjNo23r-sKvs7-ShfIszIcZXqR3LpQCuZOWq9qzFQhMb_eQQ0YBWjHr6_VhLrUgzMGEC0zKZauNlJ29EdKuu6Xs-gDPpqDeIaRCLAngEFIJUF9byGuHGHDg"/>
+<div class="absolute inset-0 img-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-md">
+<span class="font-label-sm text-label-sm uppercase text-primary-container mb-xs">Details</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Boost Pressure</h3>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="masonry-item relative group overflow-hidden bg-surface-container-low rounded-DEFAULT border border-outline-variant/30 hover-glow">
+<img class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="An ultra-wide panning shot capturing a drift car sliding sideways through a corner in an empty industrial district at night. The car is trailing a massive cloud of thick tire smoke illuminated by aggressive red taillights and harsh industrial spot lighting. The scene embodies raw velocity and underground culture. Dark, high-contrast, fast-paced action photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4AQEX8mNqMobQ9MUOz-9VqZYNO5RKToyDe0nLjQR39ldTNoRms25Isu3UDIZdyjtIyMgCav2xBM2QM_j0M6Iix9DH7crDSXq24cM65iv80gcOu_bmXAEdfyJwFgXTrimjWsN95z52cvP3RcoG10Fn2WX71qGejaYieE64gVuYOxi8eavDxNXwebCegLAjt7KgUk5IfUMU7hBIiknQ-dVIbAs6fkEPr-3cS4ckFmkr58Yhb-P40024YQ"/>
+<div class="absolute inset-0 img-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-md">
+<span class="font-label-sm text-label-sm uppercase text-primary-container mb-xs">Drift Culture</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Industrial Slide</h3>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="masonry-item relative group overflow-hidden bg-surface-container-low rounded-DEFAULT border border-outline-variant/30 hover-glow">
+<img class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A static, moody profile shot of a slammed vintage European classic car resting on air suspension in an empty, dimly lit parking garage. The car's deep black paint job reflects the sparse overhead fluorescent lights. The wheels are massive, multi-piece chrome rims sitting perfectly flush with the fenders. The aesthetic is 'low &amp; slow', sophisticated yet menacing, blending high-end modernism with classic lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAKBFRhcu_Wor0n1UIhLUNAtJ743X333rtAG-ZDEIRR9AnfVvNjJqH_gN42SQQkaA82Mf4aFnhYXTE4I42fZP2RwEDaUdvMjdypCCxwD-2upspOu5C8ESShNlq_kIiFkS9hzknPJY5kTzlrFqx15AJe3rn8QklJbk5gM8wPN006-3HzYIHT-B91pmhtfkOVSGWFMUJB5kW6-Q-vJuorzr3mGqazC5XERQyIZw1lfcp0BYgyHG5R83qLQ"/>
+<div class="absolute inset-0 img-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-md">
+<span class="font-label-sm text-label-sm uppercase text-primary-container mb-xs">Low &amp; Slow</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Static Stance</h3>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="masonry-item relative group overflow-hidden bg-surface-container-low rounded-DEFAULT border border-outline-variant/30 hover-glow">
+<div class="glass-card absolute top-4 left-4 z-10 px-3 py-1">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-widest">Featured</span>
+</div>
+<img class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A dramatic interior shot from the driver's perspective inside a stripped-out race car cockpit at night. The main focus is on the glowing digital dashboard cluster and a carbon fiber steering wheel, illuminated in sharp orange and white technical readouts. The windshield reveals a blurred cityscape whizzing by, conveying extreme speed. High-tech, precise, cockpit aesthetic with deep shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmOImpfm6L-swBBP7L8hmesb4ncq3GCLZa1bLDhpUncK_PCtaSMtWz9p5QyPeU_lfv58CYrnxuU3c2AymW_gzS7IstChmHhjqfseHSwMd3wdO1SBjoE7zDmd8QJFamE5ZTjstilKRfsfD99ce2COVJmr7_zYYuWnHFQzeGZ5gKv1lG7pngFoTgal7nJ08NsxlYp2VcGFhT6-4UdTSlPLUSN7tq8TOjM8w0VHQTrkNgOjOt2aUxOhJeyQ"/>
+<div class="absolute inset-0 img-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-md">
+<span class="font-label-sm text-label-sm uppercase text-primary-container mb-xs">Performance</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Cockpit View</h3>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="masonry-item relative group overflow-hidden bg-surface-container-low rounded-DEFAULT border border-outline-variant/30 hover-glow">
+<img class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A tight, artistic detail shot of a set of wide aftermarket forged wheels on a lowered street car, parked on slick, rain-soaked asphalt reflecting city lights. The brake calipers are painted a vibrant, aggressive primary orange, contrasting sharply with the deep graphite of the wheels and infinite black of the shadowy wheel well. Premium showroom quality automotive photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhHt1VWEJ1M2prWwIr3PGlEkycmxFr1hjtCEJNg7uWvjDiR6w7QRoCuOU-Y4ZUSE67IFgqhZqFrJ1n1Z8_DW4UTSvgpOgTZtvEt9LWJdEfttzKNdSxqKhoWig1NZMw5GZTNUidIya0kbnibBOocLJubX1FlTu2cvu2ab12a7-IGCoDHx7LlEGa-IpGOG-pNkBkmR2cMUnJW5-KRok5KZFLWT7Y49SgJ_OkcklehRpvY8ngaM13pBMo8g"/>
+<div class="absolute inset-0 img-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-md">
+<span class="font-label-sm text-label-sm uppercase text-primary-container mb-xs">Details</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Forged Stance</h3>
+</div>
+</div>
+</section>
+<!-- Load More -->
+<div class="flex justify-center mt-xl">
+<button class="btn-primary font-label-md text-label-md uppercase px-8 py-4 flex items-center gap-2">
+                Load More
+                <span class="material-symbols-outlined" style="font-size: 18px;">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full mt-xl border-t border-outline-variant grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-xl">
+<div class="col-span-1 md:col-span-1 flex flex-col justify-center items-start">
+<span class="font-headline-sm text-headline-sm font-black text-primary italic mb-2">OLIVEIRA CAR FEST</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-2">
+                ENGINEERED FOR EXCELLENCE.
+            </p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-4 opacity-50">
+                © 2024 OLIVEIRA CAR FEST.
+            </p>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-wrap gap-x-lg gap-y-4 items-center justify-start md:justify-end">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200" href="#">Termos de Uso</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200" href="#">Privacidade</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200" href="#">FAQ</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200" href="#">Imprensa</a>
+</div>
+</footer>
+</body></html>
