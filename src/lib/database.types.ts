@@ -45,6 +45,7 @@ export interface Database {
           description: string
           banner_url: string
           is_next_event: boolean
+          donation_items: string | null
           created_at: string | null
         }
         Insert: {
@@ -57,6 +58,7 @@ export interface Database {
           description: string
           banner_url: string
           is_next_event?: boolean
+          donation_items?: string | null
           created_at?: string | null
         }
         Update: {
@@ -69,6 +71,7 @@ export interface Database {
           description?: string
           banner_url?: string
           is_next_event?: boolean
+          donation_items?: string | null
           created_at?: string | null
         }
         Relationships: []
@@ -242,6 +245,7 @@ export interface Database {
           car_plate: string
           car_photo_url: string | null
           event_id: string | null
+          donation_choice: string | null
           created_at: string | null
         }
         Insert: {
@@ -257,6 +261,7 @@ export interface Database {
           car_plate?: string
           car_photo_url?: string | null
           event_id?: string | null
+          donation_choice?: string | null
           created_at?: string | null
         }
         Update: {
@@ -272,6 +277,7 @@ export interface Database {
           car_plate?: string
           car_photo_url?: string | null
           event_id?: string | null
+          donation_choice?: string | null
           created_at?: string | null
         }
         Relationships: [

@@ -8,6 +8,7 @@ export type Event = {
   description?: string;
   banner_url?: string;
   is_next_event: boolean;
+  donation_items?: string;
 };
 
 export type Album = {

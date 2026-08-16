@@ -18,6 +18,7 @@
 - `description`: text
 - `banner_url`: text
 - `is_next_event`: boolean (Default: false)
+- `donation_items`: text (Itens de doação separados por vírgula)
 - `created_at`: timestamp
 
 ### `albums`
@@ -79,6 +80,7 @@
 - `instagram`: text
 - `car_photo_url`: text (URL da foto do veículo anexada)
 - `status`: text (default 'pendente', opções: pendente, aprovado, rejeitado)
+- `donation_choice`: text (Doação escolhida pelo expositor)
 - `created_at`: timestamp
 
 ## 2. Storage Buckets

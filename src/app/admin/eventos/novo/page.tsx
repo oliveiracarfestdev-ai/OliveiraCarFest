@@ -83,6 +83,12 @@ export default function NovoEventoPage() {
           </div>
 
           <div className="space-y-2">
+            <label className="font-sans text-xs uppercase text-muted-foreground">Acesso Solidário / Doações (Opcional)</label>
+            <input name="donation_items" placeholder="Ex: 1kg de Alimento, Brinquedo Novo" className="w-full bg-background border border-border/50 p-3 text-sm text-foreground focus:border-primary outline-none" />
+            <p className="text-xs text-muted-foreground font-sans">Separe os itens por vírgula. Se preenchido, os expositores terão que escolher uma opção.</p>
+          </div>
+
+          <div className="space-y-2">
             <label className="font-sans text-xs uppercase text-muted-foreground">Descrição (Opcional)</label>
             <textarea name="description" rows={4} className="w-full bg-background border border-border/50 p-3 text-sm text-foreground focus:border-primary outline-none resize-none"></textarea>
           </div>

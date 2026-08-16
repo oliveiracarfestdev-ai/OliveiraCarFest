@@ -13,11 +13,16 @@ interface EventData {
   title: string;
   date: string;
   location: string;
+  donation_items?: string | null;
 }
 
 export function ExhibitorForm({ events }: { events: EventData[] }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null)
+  const [selectedEventId, setSelectedEventId] = useState<string>('')
+
+  const selectedEvent = events.find(e => e.id === selectedEventId)
+  const donationOptions = selectedEvent?.donation_items ? selectedEvent.donation_items.split(',').map(i => i.trim()).filter(Boolean) : []
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -67,6 +72,8 @@ export function ExhibitorForm({ events }: { events: EventData[] }) {
           name="event_id" 
           required 
           className="w-full bg-background/50 border border-border/50 p-3 text-sm text-foreground focus:border-primary focus:outline-none h-12"
+          value={selectedEventId}
+          onChange={(e) => setSelectedEventId(e.target.value)}
         >
           <option value="">Escolha um evento...</option>
           {events.map((evt) => {
@@ -142,6 +149,25 @@ export function ExhibitorForm({ events }: { events: EventData[] }) {
           className="bg-background/50 border-border/50 focus:border-primary min-h-[120px]" 
         />
       </div>
+
+      {donationOptions.length > 0 && (
+        <div className="space-y-3 pt-4 border-t border-border/30">
+          <label className="text-sm font-sans uppercase font-bold tracking-widest text-primary">
+            Acesso Solidário Obrigatório
+          </label>
+          <p className="text-xs text-muted-foreground font-sans mb-2">
+            Este evento exige uma doação. Por favor, marque qual item você levará no dia:
+          </p>
+          <div className="flex flex-col space-y-2">
+            {donationOptions.map((option, idx) => (
+              <label key={idx} className="flex items-center space-x-3 bg-background/30 border border-border/50 p-3 cursor-pointer hover:border-primary transition-colors">
+                <input type="radio" name="donation_choice" value={option} required className="text-primary focus:ring-primary h-4 w-4" />
+                <span className="font-sans text-sm text-foreground">{option}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
 
       {message && (
         <div className={`p-4 rounded-sm border ${message.type === 'success' ? 'bg-green-500/10 border-green-500/50 text-green-400' : 'bg-red-500/10 border-red-500/50 text-red-400'}`}>

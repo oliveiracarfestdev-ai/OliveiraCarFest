@@ -60,6 +60,13 @@ export default async function TicketPage({ params }: { params: { id: string } })
             </div>
           </div>
 
+          {targetLead.donation_choice && (
+            <div className="mb-8 p-4 bg-gray-100 border border-gray-300 rounded-sm">
+              <p className="font-sans text-xs uppercase text-gray-500 font-bold mb-1">Acesso Solidário Obrigatório</p>
+              <p className="font-sans text-lg font-bold uppercase text-black">Trazer no dia: {targetLead.donation_choice}</p>
+            </div>
+          )}
+
           <div className="grid grid-cols-3 gap-8 pt-8 border-t-2 border-black border-dashed">
             <div className="col-span-1">
               <p className="font-sans text-xs uppercase text-gray-500 font-bold mb-1">Placa de Acesso</p>

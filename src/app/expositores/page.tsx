@@ -15,7 +15,7 @@ export default async function ExpositoresPage() {
   
   const { data: events } = await supabase
     .from('events')
-    .select('id, title, date, location')
+    .select('id, title, date, location, donation_items')
     .gte('date', today)
     .order('date', { ascending: true });
   return (

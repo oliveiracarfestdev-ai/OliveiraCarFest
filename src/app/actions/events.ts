@@ -13,6 +13,7 @@ const eventSchema = z.object({
   time: z.string().min(5, 'Hora inválida'),
   location: z.string().min(2, 'Local é obrigatório'),
   description: z.string().optional(),
+  donation_items: z.string().optional(),
 })
 
 export async function createEvent(formData: FormData) {
@@ -25,6 +26,7 @@ export async function createEvent(formData: FormData) {
     time: formData.get('time') as string,
     location: formData.get('location') as string,
     description: formData.get('description') as string,
+    donation_items: formData.get('donation_items') as string,
   }
 
   const parsed = eventSchema.safeParse(data)
@@ -51,6 +53,7 @@ export async function createEvent(formData: FormData) {
     description: parsed.data.description || '',
     banner_url,
     address_url: '#', // placeholder
+    donation_items: parsed.data.donation_items || null,
   })
 
   if (error) {

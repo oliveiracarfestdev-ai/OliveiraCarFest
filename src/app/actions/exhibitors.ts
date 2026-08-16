@@ -18,6 +18,7 @@ const exhibitorSchema = z.object({
   car_year: z.string().min(4, 'Ano é obrigatório').transform(sanitizeHtml),
   modifications: z.string().min(5, 'Descreva as modificações (mínimo 5 caracteres)').transform(sanitizeHtml),
   instagram: z.string().min(2, 'Instagram é obrigatório (@)').transform(sanitizeHtml),
+  donation_choice: z.string().optional().transform(v => v ? sanitizeHtml(v) : null),
 })
 
 export async function createExhibitorLead(formData: FormData) {
