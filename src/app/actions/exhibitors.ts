@@ -38,6 +38,20 @@ export async function createExhibitorLead(formData: FormData) {
     }
   }
 
+  const supabase = await createClient()
+
+  // PREVENIR INSCRIÇÃO DUPLICADA
+  const { data: existingLead } = await supabase
+    .from('exhibitor_leads')
+    .select('id')
+    .eq('event_id', validated.data.event_id)
+    .eq('car_plate', validated.data.car_plate)
+    .single()
+
+  if (existingLead) {
+    return { error: 'Este veículo (placa) já possui uma inscrição para este evento.' }
+  }
+
   let car_photo_url = null
   const photoFile = formData.get('car_photo') as File
   if (photoFile && photoFile.size > 0) {
@@ -49,8 +63,6 @@ export async function createExhibitorLead(formData: FormData) {
       return { error: e.message || 'Erro ao fazer upload da imagem do carro. Tente novamente.' }
     }
   }
-
-  const supabase = await createClient()
 
   const { error } = await supabase
     .from('exhibitor_leads')

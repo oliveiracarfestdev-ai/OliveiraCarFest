@@ -6,10 +6,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { sponsorSchema, SponsorFormData } from '@/lib/validations/sponsor'
 import { submitSponsorLead } from '@/app/actions/sponsor'
+import { toast } from 'sonner'
 
 export function SponsorForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string } | null>(null)
 
   const {
     register,
@@ -22,15 +22,14 @@ export function SponsorForm() {
 
   const onSubmit = async (data: SponsorFormData) => {
     setIsSubmitting(true)
-    setSubmitStatus(null)
 
     const result = await submitSponsorLead(data)
 
     if (result.success) {
-      setSubmitStatus({ success: true, message: 'Interesse enviado com sucesso. Nossa equipe entrará em contato!' })
+      toast.success('Interesse enviado com sucesso. Nossa equipe entrará em contato!')
       reset()
     } else {
-      setSubmitStatus({ success: false, message: result.error || 'Erro ao enviar. Tente novamente.' })
+      toast.error(result.error || 'Erro ao enviar. Tente novamente.')
     }
 
     setIsSubmitting(false)
@@ -38,11 +37,6 @@ export function SponsorForm() {
 
   return (
     <form className="space-y-8 relative z-10 bg-card p-12 border border-border/50 backdrop-blur-sm" onSubmit={handleSubmit(onSubmit)}>
-      {submitStatus && (
-        <div className={`p-4 rounded-sm font-sans text-sm mb-6 ${submitStatus.success ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'}`}>
-          {submitStatus.message}
-        </div>
-      )}
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="relative">

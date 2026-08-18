@@ -7,11 +7,13 @@ import { usePathname } from 'next/navigation'
 
 const navItems = [
   { name: 'Dashboard', href: '/admin', icon: 'dashboard' },
+  { name: 'Validação', href: '/admin/validacao', icon: 'qr_code_scanner' },
   { name: 'Eventos', href: '/admin/eventos', icon: 'event' },
   { name: 'Galerias', href: '/admin/galerias', icon: 'collections' },
   { name: 'Patrocinadores', href: '/admin/patrocinadores', icon: 'handshake' },
   { name: 'Expositores', href: '/admin/expositores', icon: 'garage' },
   { name: 'Leads e Contatos', href: '/admin/leads', icon: 'mail' },
+  { name: 'Configurações', href: '/admin/configuracoes', icon: 'settings' },
 ]
 
 export function MobileAdminMenu() {
@@ -35,7 +37,7 @@ export function MobileAdminMenu() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
-            className="fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-background border-r border-border/40 p-4 flex flex-col gap-2 shadow-2xl z-50 overflow-y-auto"
+            className="fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-background/95 backdrop-blur-md border-r border-border/40 p-4 flex flex-col gap-2 shadow-2xl z-50 overflow-y-auto"
           >
             {navItems.map((item) => {
               const isActive = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href))

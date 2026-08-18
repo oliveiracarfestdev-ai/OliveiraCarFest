@@ -74,9 +74,9 @@ export default function SejaPatrocinador() {
             <div className="bg-card/50 p-8 border-l-2 border-primary">
               <h3 className="font-heading text-xl uppercase font-bold text-primary mb-2">Nossos Números</h3>
               <ul className="space-y-2 font-sans text-foreground">
-                <li className="flex justify-between border-b border-border/50 pb-2"><span>Público Médio por Evento</span> <strong>5.000+</strong></li>
-                <li className="flex justify-between border-b border-border/50 pb-2 pt-2"><span>Carros Expostos</span> <strong>500+</strong></li>
-                <li className="flex justify-between pt-2"><span>Alcance Digital</span> <strong>100k+ impressões</strong></li>
+                <li className="flex justify-between border-b border-border/50 pb-2"><span>Público Médio por Evento</span> <strong>300+</strong></li>
+                <li className="flex justify-between border-b border-border/50 pb-2 pt-2"><span>Carros Expostos</span> <strong>140+</strong></li>
+                <li className="flex justify-between pt-2"><span>Alcance Digital</span> <strong>5k+ impressões</strong></li>
               </ul>
             </div>
           </div>

@@ -84,6 +84,16 @@ export default function NovoAlbumForm({ events }: { events: { id: string, title:
           </div>
 
           <div className="space-y-2">
+            <label className="font-sans text-xs uppercase text-muted-foreground">Categoria do Álbum</label>
+            <select name="category" required className="w-full bg-background border border-border/50 p-3 text-sm text-foreground focus:border-primary outline-none">
+              <option value="Todos">Todos</option>
+              <option value="Rebaixados">Rebaixados</option>
+              <option value="Performance">Performance</option>
+              <option value="Clássicos">Clássicos</option>
+            </select>
+          </div>
+
+          <div className="space-y-2">
             <label className="font-sans text-xs uppercase text-muted-foreground">Capa do Álbum (1 imagem)</label>
             <input name="cover" type="file" accept="image/*" required className="w-full bg-background border border-border/50 p-3 text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-xs file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20" />
           </div>
@@ -100,6 +110,19 @@ export default function NovoAlbumForm({ events }: { events: { id: string, title:
           </Button>
         </form>
       </div>
+
+      {/* Loading Overlay */}
+      {isSubmitting && (
+        <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center">
+          <div className="bg-card border border-border/50 p-8 rounded-sm flex flex-col items-center max-w-sm text-center shadow-2xl">
+            <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+            <h3 className="font-heading text-xl uppercase font-bold text-foreground mb-2">Processando Fotos...</h3>
+            <p className="font-sans text-sm text-muted-foreground">
+              Comprimindo as imagens e salvando a galeria. Por favor, não feche esta página. (Isso pode demorar dependendo da quantidade de fotos).
+            </p>
+          </div>
+        </div>
+      )}
     </>
   )
 }

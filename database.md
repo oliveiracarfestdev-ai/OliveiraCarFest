@@ -19,6 +19,8 @@
 - `banner_url`: text
 - `is_next_event`: boolean (Default: false)
 - `donation_items`: text (Itens de doação separados por vírgula)
+- `category`: text (Default: 'Encontro')
+- `max_exhibitors`: integer (Default: 50)
 - `created_at`: timestamp
 
 ### `albums`
@@ -26,6 +28,7 @@
 - `event_id`: UUID (FK para events)
 - `title`: text
 - `cover_url`: text
+- `category`: text (Default: 'Todos')
 - `created_at`: timestamp
 
 ### `photos`
@@ -82,6 +85,12 @@
 - `status`: text (default 'pendente', opções: pendente, aprovado, rejeitado)
 - `donation_choice`: text (Doação escolhida pelo expositor)
 - `created_at`: timestamp
+
+### `site_settings`
+- `id`: integer (Primary Key)
+- `exclusive_cars_count`: integer
+- `official_partners_count`: integer
+- `updated_at`: timestamp
 
 ## 2. Storage Buckets
 - `event-banners`: Armazena os banners principais dos eventos.

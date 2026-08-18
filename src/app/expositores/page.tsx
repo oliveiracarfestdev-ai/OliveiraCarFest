@@ -15,9 +15,35 @@ export default async function ExpositoresPage() {
   
   const { data: events } = await supabase
     .from('events')
-    .select('id, title, date, location, donation_items')
+    .select('id, title, date, location, donation_items, max_exhibitors')
     .gte('date', today)
     .order('date', { ascending: true });
+
+  const eventIds = events?.map(e => e.id) || [];
+  
+  let approvedCounts: Record<string, number> = {};
+  if (eventIds.length > 0) {
+    const { data: approvedLeads } = await supabase
+      .from('exhibitor_leads')
+      .select('event_id')
+      .in('event_id', eventIds)
+      .eq('status', 'aprovado');
+      
+    approvedLeads?.forEach(lead => {
+      approvedCounts[lead.event_id] = (approvedCounts[lead.event_id] || 0) + 1;
+    });
+  }
+
+  const eventsWithCapacity = events?.map(event => {
+    const approvedCount = approvedCounts[event.id] || 0;
+    const max = event.max_exhibitors || 50;
+    const available = Math.max(0, max - approvedCount);
+    return {
+      ...event,
+      available_spots: available
+    }
+  }) || [];
+
   return (
     <>
       <Header />
@@ -64,7 +90,7 @@ export default async function ExpositoresPage() {
               Formulário de Inscrição
             </h2>
             
-            <ExhibitorForm events={events || []} />
+            <ExhibitorForm events={eventsWithCapacity} />
           </div>
         </div>
       </main>

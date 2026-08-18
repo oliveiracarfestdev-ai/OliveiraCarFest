@@ -30,3 +30,12 @@ export async function uploadFile(bucket: string, file: File, path: string) {
 
   return publicUrlData.publicUrl
 }
+
+export async function deleteFile(bucket: string, path: string) {
+  const supabase = await createClient()
+  const { error } = await supabase.storage.from(bucket).remove([path])
+  if (error) {
+    console.error('Error deleting file:', error)
+    throw error
+  }
+}

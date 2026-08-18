@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
+import { DashboardCharts } from '@/components/admin/DashboardCharts'
 
 export default async function AdminDashboard() {
   const supabase = await createClient()
@@ -9,14 +10,36 @@ export default async function AdminDashboard() {
     { count: photosCount },
     { count: sponsorsCount },
     { count: leadsCount },
-    { count: messagesCount }
+    { count: messagesCount },
+    { data: exhibitorStatusData }
   ] = await Promise.all([
     supabase.from('events').select('*', { count: 'exact', head: true }),
     supabase.from('photos').select('*', { count: 'exact', head: true }),
     supabase.from('sponsors').select('*', { count: 'exact', head: true }),
     supabase.from('sponsor_leads').select('*', { count: 'exact', head: true }),
     supabase.from('contact_messages').select('*', { count: 'exact', head: true }),
+    supabase.from('exhibitor_leads').select('status')
   ])
+
+  // Process data for charts
+  const statusCounts = (exhibitorStatusData || []).reduce((acc: Record<string, number>, curr) => {
+    const status = curr.status || 'pendente';
+    acc[status] = (acc[status] || 0) + 1;
+    return acc;
+  }, {});
+
+  const exhibitorsByStatus = Object.keys(statusCounts).map(status => ({
+    status,
+    count: statusCounts[status]
+  }));
+
+  const overviewData = [
+    { name: 'Eventos', value: eventsCount || 0 },
+    { name: 'Fotos', value: photosCount || 0 },
+    { name: 'Patrocinadores', value: sponsorsCount || 0 },
+    { name: 'Parcerias', value: leadsCount || 0 },
+    { name: 'Mensagens', value: messagesCount || 0 }
+  ];
 
   const stats = [
     { name: 'Eventos', value: eventsCount || 0, icon: 'event', href: '/admin/eventos', color: 'text-primary' },
@@ -27,7 +50,7 @@ export default async function AdminDashboard() {
   ]
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8">
+    <div className="max-w-6xl mx-auto space-y-8 pb-12">
       <div>
         <h1 className="font-heading text-3xl uppercase font-bold mb-2">Visão Geral</h1>
         <p className="text-muted-foreground font-sans">Bem-vindo ao painel de controle do Oliveira Car Fest.</p>
@@ -58,6 +81,8 @@ export default async function AdminDashboard() {
           </div>
         ))}
       </div>
+
+      <DashboardCharts exhibitorsByStatus={exhibitorsByStatus} overviewData={overviewData} />
     </div>
   )
 }

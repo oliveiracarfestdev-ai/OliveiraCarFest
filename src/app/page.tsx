@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FadeIn } from "@/components/ui/fade-in";
 import { supabasePublic } from "@/lib/supabase/public";
 import { Countdown } from "@/components/ui/countdown";
+import { CountUp } from "@/components/ui/count-up";
 
 export const revalidate = 60; // 1 minute cache
 
@@ -19,6 +20,17 @@ export default async function Home() {
     .order('date', { ascending: true })
     .limit(1)
     .single();
+
+  const [
+    { count: eventsCount },
+    { data: settings }
+  ] = await Promise.all([
+    supabase.from('events').select('*', { count: 'exact', head: true }),
+    supabase.from('site_settings').select('exclusive_cars_count, official_partners_count').eq('id', 1).single()
+  ]);
+
+  const exhibitorsCount = settings?.exclusive_cars_count || 0;
+  const sponsorsCount = settings?.official_partners_count || 0;
 
   let formattedDate = "";
   let targetDateStr = "";
@@ -61,29 +73,29 @@ export default async function Home() {
       <Header />
       <main className="flex-grow pt-[80px]">
         {/* Hero Section */}
-        <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        <section className="relative w-full h-[90vh] min-h-[600px] flex items-end pb-32 justify-center overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <div 
               className="bg-cover bg-center w-full h-full object-cover" 
-              style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDsHAUm3jb1CUHtL7j1CMyxfol1603KyzuGkVQ5QwU5HOkJ25nzkuWyH61Kx_43Kg-ZvQhSxZ9L_GRUJFoQoX1JaQYpdAaI7xfJY8Yzi0UI5Ae9hrlOl8LKGnKShqHpO7M3PU8WSFAtaWm8FbDD23CYmglIfwm-DldXxypbbykhUvC1S8FyB9cjinKyIFKlhd2H_iI9DPzRTn0TatHFT6J28W8gsKybS8vgF9jQg19cKGZCvcTJDIwGtg')" }}
+              style={{ backgroundImage: "url('/fundo_home.png')" }}
             ></div>
             <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background z-10"></div>
           </div>
           <div className="relative z-20 w-full px-4 md:px-16 text-center md:text-left flex flex-col md:items-start items-center max-w-7xl mx-auto">
             <FadeIn delay={0.1}>
               <div className="glass-panel p-6 border-l-4 border-primary inline-block mb-12 bg-card/60 backdrop-blur-md">
-                <span className="font-label-md text-sm uppercase text-primary tracking-widest">A Convergência de Engenharia e Estilo</span>
+                <span className="font-label-md text-sm uppercase text-primary tracking-widest">O Maior Encontro de Projetos Exclusivos</span>
               </div>
             </FadeIn>
             <FadeIn delay={0.3}>
               <h1 className="font-heading text-6xl md:text-8xl text-foreground uppercase mb-6 leading-none font-black">
-                PRECISÃO<br/>{' '}<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">ENCONTRA PAIXÃO</span>
+                CULTURA<br/>{' '}<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">ENCONTRA PAIXÃO</span>
               </h1>
             </FadeIn>
             <FadeIn delay={0.5}>
               <p className="font-sans text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 hidden md:block">
-                A experiência automotiva definitiva. Exclusividade, performance e design convergem em eventos curados para os verdadeiros entusiastas e colecionadores.
+                Exclusividade, estilo e paixão convergem em eventos organizados para os verdadeiros entusiastas.
               </p>
             </FadeIn>
             <FadeIn delay={0.7}>
@@ -139,18 +151,18 @@ export default async function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <FadeIn delay={0.1} direction="up" className="bg-card p-12 border border-border flex flex-col items-center text-center group transition-all">
                 <span className="material-symbols-outlined text-primary text-5xl mb-6">directions_car</span>
-                <span className="font-heading text-5xl font-bold text-foreground group-hover:text-primary transition-colors">2.5K+</span>
-                <span className="font-sans text-sm uppercase text-muted-foreground tracking-widest mt-2">Carros Registrados</span>
+                <span className="font-heading text-5xl font-bold text-foreground group-hover:text-primary transition-colors"><CountUp to={exhibitorsCount || 0} /></span>
+                <span className="font-sans text-sm uppercase text-muted-foreground tracking-widest mt-2">Carros Exclusivos</span>
               </FadeIn>
               <FadeIn delay={0.3} direction="up" className="bg-card p-12 border border-border flex flex-col items-center text-center group transition-all">
                 <span className="material-symbols-outlined text-primary text-5xl mb-6">flag</span>
-                <span className="font-heading text-5xl font-bold text-foreground group-hover:text-primary transition-colors">48</span>
+                <span className="font-heading text-5xl font-bold text-foreground group-hover:text-primary transition-colors"><CountUp to={eventsCount || 0} /></span>
                 <span className="font-sans text-sm uppercase text-muted-foreground tracking-widest mt-2">Eventos Realizados</span>
               </FadeIn>
               <FadeIn delay={0.5} direction="up" className="bg-card p-12 border border-border flex flex-col items-center text-center group transition-all">
-                <span className="material-symbols-outlined text-primary text-5xl mb-6">public</span>
-                <span className="font-heading text-5xl font-bold text-foreground group-hover:text-primary transition-colors">150K</span>
-                <span className="font-sans text-sm uppercase text-muted-foreground tracking-widest mt-2">Seguidores Globais</span>
+                <span className="material-symbols-outlined text-primary text-5xl mb-6">handshake</span>
+                <span className="font-heading text-5xl font-bold text-foreground group-hover:text-primary transition-colors"><CountUp to={sponsorsCount || 0} /></span>
+                <span className="font-sans text-sm uppercase text-muted-foreground tracking-widest mt-2">Parceiros Oficiais</span>
               </FadeIn>
             </div>
           </div>

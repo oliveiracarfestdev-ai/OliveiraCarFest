@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { updateExhibitorStatus, deleteExhibitorLead } from '@/app/actions/exhibitors'
 
+import { ConfirmDialog } from '@/components/ui/confirm-dialog'
+
 export function UpdateStatusButton({ id, currentStatus }: { id: string, currentStatus: string }) {
   const [isUpdating, setIsUpdating] = useState(false)
 
@@ -49,21 +51,24 @@ export function DeleteExhibitorButton({ id }: { id: string }) {
   const [isDeleting, setIsDeleting] = useState(false)
 
   const handleDelete = async () => {
-    if (confirm('Tem certeza que deseja excluir esta inscrição permanentemente?')) {
-      setIsDeleting(true)
-      await deleteExhibitorLead(id)
-      setIsDeleting(false)
-    }
+    setIsDeleting(true)
+    await deleteExhibitorLead(id)
+    setIsDeleting(false)
   }
 
   return (
-    <button 
-      onClick={handleDelete}
-      disabled={isDeleting}
-      className="text-red-500 hover:text-red-400 p-2 transition-colors disabled:opacity-50"
-      title="Excluir Inscrição"
+    <ConfirmDialog 
+      title="Excluir Inscrição?" 
+      description="Tem certeza que deseja excluir esta inscrição permanentemente? Esta ação não pode ser desfeita."
+      onConfirm={handleDelete}
     >
-      <span className="material-symbols-outlined">{isDeleting ? 'hourglass_empty' : 'delete'}</span>
-    </button>
+      <button 
+        disabled={isDeleting}
+        className="text-red-500 hover:text-red-400 p-2 transition-colors disabled:opacity-50 flex items-center justify-center w-8 h-8 rounded-sm hover:bg-red-500/10"
+        title="Excluir Inscrição"
+      >
+        <span className="material-symbols-outlined text-[18px]">{isDeleting ? 'hourglass_empty' : 'delete'}</span>
+      </button>
+    </ConfirmDialog>
   )
 }

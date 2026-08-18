@@ -8,16 +8,40 @@ type Photo = {
   id: string
   image_url: string
   album_id: string
-  albums?: { title: string } | null
+  albums?: { title: string, category?: string } | null
 }
+
+import { EmptyState } from '@/components/ui/empty-state'
 
 export function GalleryGrid({ photos }: { photos: Photo[] }) {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
+  const [filter, setFilter] = useState('Todos')
+
+  const filteredPhotos = filter === 'Todos'
+    ? photos
+    : photos.filter(photo => photo.albums?.category === filter)
 
   return (
     <>
+      {/* Filters */}
+      <section className="mb-12 flex flex-wrap gap-4 md:gap-6 justify-center md:justify-start">
+        {['Todos', 'Rebaixados', 'Performance', 'Clássicos'].map(cat => (
+          <button 
+            key={cat}
+            onClick={() => setFilter(cat)}
+            className={`border-b-2 font-sans text-sm uppercase pb-1 px-2 font-bold transition-all ${
+              filter === cat 
+                ? 'border-primary text-primary' 
+                : 'border-transparent text-muted-foreground hover:text-primary hover:border-primary/30'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </section>
+
       <div className="columns-1 md:columns-2 lg:columns-3 gap-6 w-full">
-        {photos.map((photo, index) => (
+        {filteredPhotos.map((photo, index) => (
           <div 
             key={photo.id} 
             className="break-inside-avoid mb-6 relative group overflow-hidden bg-card rounded-md border border-border/30 hover-glow shadow-md cursor-pointer"
@@ -36,7 +60,7 @@ export function GalleryGrid({ photos }: { photos: Photo[] }) {
               decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-              <span className="font-sans text-xs uppercase text-primary mb-1">Cultura Noturna</span>
+              <span className="font-sans text-xs uppercase text-primary mb-1">{photo.albums?.category || 'Cultura Noturna'}</span>
               <h3 className="font-heading text-2xl text-white font-bold">{photo.albums?.title || "Captura"}</h3>
               <div className="flex items-center gap-2 mt-2">
                 <span className="material-symbols-outlined text-gray-300 text-sm">photo_camera</span>
@@ -45,13 +69,15 @@ export function GalleryGrid({ photos }: { photos: Photo[] }) {
             </div>
           </div>
         ))}
-
-        {photos.length === 0 && (
-          <div className="col-span-full py-12">
-            <p className="text-muted-foreground">Nenhuma foto encontrada.</p>
-          </div>
-        )}
       </div>
+
+      {filteredPhotos.length === 0 && (
+        <EmptyState 
+          icon="photo_library" 
+          title="Nenhuma Foto Encontrada" 
+          description="Ainda não temos registros fotográficos para esta categoria. Volte em breve!" 
+        />
+      )}
 
       {photos.length > 0 && (
         <div className="flex justify-center mt-12">

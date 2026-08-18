@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="pt-BR"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sobre | OLIVEIRA CAR FEST</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="dark" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sobre | OLIVEIRA CAR FEST</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -107,14 +115,15 @@
             }
         }
     </script>
-<style>
+    <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+
         .fill-icon {
             font-variation-settings: 'FILL' 1;
         }
-        
+
         /* Glassmorphism utility */
         .glass-panel {
             background: rgba(31, 31, 31, 0.4);
@@ -128,204 +137,294 @@
         .hover-glow:hover {
             box-shadow: 0 0 40px 10px rgba(255, 102, 0, 0.15);
         }
-        
+
         /* Custom scrollbar for webkit */
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #121414;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #333535;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #ff6600;
         }
     </style>
 </head>
-<body class="bg-background text-on-surface antialiased selection:bg-primary-container selection:text-white min-h-screen flex flex-col">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-300" id="main-nav">
-<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-full mx-auto">
-<!-- Brand Logo -->
-<a class="font-headline-md text-headline-md font-black text-primary italic tracking-tighter" href="#">
+
+<body
+    class="bg-background text-on-surface antialiased selection:bg-primary-container selection:text-white min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-300"
+        id="main-nav">
+        <div
+            class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-full mx-auto">
+            <!-- Brand Logo -->
+            <a class="font-headline-md text-headline-md font-black text-primary italic tracking-tighter" href="#">
                 OLIVEIRA CAR FEST
             </a>
-<!-- Navigation Links (Desktop) -->
-<div class="hidden md:flex items-center gap-gutter">
-<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-2" href="#">Home</a>
-<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-2" href="#">Eventos</a>
-<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-2" href="#">Galeria</a>
-<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-2" href="#">Patrocinadores</a>
-<a class="font-label-md text-label-md uppercase tracking-wider text-primary border-b-2 border-primary pb-1 py-2" href="#">Sobre</a>
-<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-2" href="#">Contato</a>
-</div>
-<!-- Trailing Actions -->
-<div class="flex items-center gap-md">
-<button class="hidden md:flex items-center justify-center font-label-md text-label-md uppercase tracking-wider text-primary hover:bg-primary/10 transition-all duration-300 px-4 py-2 border border-outline-variant/50 hover:border-primary scale-95 active:opacity-80">
+            <!-- Navigation Links (Desktop) -->
+            <div class="hidden md:flex items-center gap-gutter">
+                <a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-2"
+                    href="#">Home</a>
+                <a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-2"
+                    href="#">Eventos</a>
+                <a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-2"
+                    href="#">Galeria</a>
+                <a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-2"
+                    href="#">Patrocinadores</a>
+                <a class="font-label-md text-label-md uppercase tracking-wider text-primary border-b-2 border-primary pb-1 py-2"
+                    href="#">Sobre</a>
+                <a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-2"
+                    href="#">Contato</a>
+            </div>
+            <!-- Trailing Actions -->
+            <div class="flex items-center gap-md">
+                <button
+                    class="hidden md:flex items-center justify-center font-label-md text-label-md uppercase tracking-wider text-primary hover:bg-primary/10 transition-all duration-300 px-4 py-2 border border-outline-variant/50 hover:border-primary scale-95 active:opacity-80">
                     LOGIN
                 </button>
-<button aria-label="Directions" class="text-on-surface hover:text-primary transition-colors hover:bg-primary/10 rounded-full p-2">
-<span aria-hidden="true" class="material-symbols-outlined fill-icon" data-icon="directions_car">directions_car</span>
-</button>
-<!-- Mobile Menu Toggle -->
-<button class="md:hidden text-on-surface hover:text-primary transition-colors p-2" id="mobile-menu-btn">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
-</div>
-<!-- Mobile Menu (Hidden by default) -->
-<div class="md:hidden hidden bg-surface-container-high border-t border-outline-variant/30 absolute w-full left-0 top-full" id="mobile-menu">
-<div class="flex flex-col p-margin-mobile gap-sm">
-<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface py-3 border-b border-outline-variant/20" href="#">Home</a>
-<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface py-3 border-b border-outline-variant/20" href="#">Eventos</a>
-<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface py-3 border-b border-outline-variant/20" href="#">Galeria</a>
-<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface py-3 border-b border-outline-variant/20" href="#">Patrocinadores</a>
-<a class="font-label-md text-label-md uppercase tracking-wider text-primary border-l-4 border-primary pl-3 py-3 bg-primary/5" href="#">Sobre</a>
-<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface py-3 border-b border-outline-variant/20" href="#">Contato</a>
-<button class="mt-4 font-label-md text-label-md uppercase tracking-wider text-background bg-primary-container py-3 w-full">LOGIN</button>
-</div>
-</div>
-</nav>
-<!-- Main Content -->
-<main class="flex-grow pt-[80px]">
-<!-- Hero Section -->
-<section class="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
-<div class="absolute inset-0 z-0">
-<div class="w-full h-full bg-cover bg-center opacity-40" data-alt="A highly atmospheric, cinematic black and white photograph of a high-performance supercar driving fast on a dark, wet track at night. The lighting is moody and dramatic, with severe contrasts between the deep black environment and the stark white reflections on the car's aerodynamic curves. A subtle, fiery orange light trails behind the vehicle, creating a sense of extreme speed and raw power. The composition is dynamic, aggressive, and perfectly aligned with a premium, high-contrast modernism visual style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDn2Bsa4nrjybGRMTGb02coDCQLP2mISkei7zLm3-LLE5oOWxbM14_C6CCnbj1NWgp7DwarCXNY0229PpsYcv_lXMi-1mAo6vtINNfB0v-JyJroi_Rm2FthYVw6ny66VZnM0Se7pwjxX_3nDMHiJP_VgPncQ8tJPPS41kArLhhdtX4Q9CAZ4omJsSJ-EW0XssDiqC5LywZ9mz9N0S5NbG3763AhLiMAre_59VJfHp38_pbjWx6YaDuvyw')"></div>
-<!-- Gradient Overlay for readability -->
-<div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
-</div>
-<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-5xl mx-auto">
-<span class="inline-block font-label-sm text-label-sm uppercase tracking-[0.2em] text-primary mb-md border border-primary/30 px-4 py-1 bg-surface/50 backdrop-blur-sm">
+                <button aria-label="Directions"
+                    class="text-on-surface hover:text-primary transition-colors hover:bg-primary/10 rounded-full p-2">
+                    <span aria-hidden="true" class="material-symbols-outlined fill-icon"
+                        data-icon="directions_car">directions_car</span>
+                </button>
+                <!-- Mobile Menu Toggle -->
+                <button class="md:hidden text-on-surface hover:text-primary transition-colors p-2" id="mobile-menu-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="md:hidden hidden bg-surface-container-high border-t border-outline-variant/30 absolute w-full left-0 top-full"
+            id="mobile-menu">
+            <div class="flex flex-col p-margin-mobile gap-sm">
+                <a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface py-3 border-b border-outline-variant/20"
+                    href="#">Home</a>
+                <a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface py-3 border-b border-outline-variant/20"
+                    href="#">Eventos</a>
+                <a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface py-3 border-b border-outline-variant/20"
+                    href="#">Galeria</a>
+                <a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface py-3 border-b border-outline-variant/20"
+                    href="#">Patrocinadores</a>
+                <a class="font-label-md text-label-md uppercase tracking-wider text-primary border-l-4 border-primary pl-3 py-3 bg-primary/5"
+                    href="#">Sobre</a>
+                <a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface py-3 border-b border-outline-variant/20"
+                    href="#">Contato</a>
+                <button
+                    class="mt-4 font-label-md text-label-md uppercase tracking-wider text-background bg-primary-container py-3 w-full">LOGIN</button>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <main class="flex-grow pt-[80px]">
+        <!-- Hero Section -->
+        <section class="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="w-full h-full bg-cover bg-center opacity-40"
+                    data-alt="A highly atmospheric, cinematic black and white photograph of a high-performance supercar driving fast on a dark, wet track at night. The lighting is moody and dramatic, with severe contrasts between the deep black environment and the stark white reflections on the car's aerodynamic curves. A subtle, fiery orange light trails behind the vehicle, creating a sense of extreme speed and raw power. The composition is dynamic, aggressive, and perfectly aligned with a premium, high-contrast modernism visual style."
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDn2Bsa4nrjybGRMTGb02coDCQLP2mISkei7zLm3-LLE5oOWxbM14_C6CCnbj1NWgp7DwarCXNY0229PpsYcv_lXMi-1mAo6vtINNfB0v-JyJroi_Rm2FthYVw6ny66VZnM0Se7pwjxX_3nDMHiJP_VgPncQ8tJPPS41kArLhhdtX4Q9CAZ4omJsSJ-EW0XssDiqC5LywZ9mz9N0S5NbG3763AhLiMAre_59VJfHp38_pbjWx6YaDuvyw')">
+                </div>
+                <!-- Gradient Overlay for readability -->
+                <div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
+            </div>
+            <div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-5xl mx-auto">
+                <span
+                    class="inline-block font-label-sm text-label-sm uppercase tracking-[0.2em] text-primary mb-md border border-primary/30 px-4 py-1 bg-surface/50 backdrop-blur-sm">
                     Nossa Essência
                 </span>
-<h1 class="font-display-lg text-display-lg text-on-surface mb-md">THE CULTURE OF <span class="text-primary italic">PERFORMANCE</span></h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-                    Não somos apenas um evento. Somos uma plataforma para a obsessão automotiva. Onde a engenharia de precisão encontra a estética pura.
+                <h1 class="font-display-lg text-display-lg text-on-surface mb-md">THE CULTURE OF <span
+                        class="text-primary italic">PERFORMANCE</span></h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Não somos apenas um evento. Somos uma plataforma para a obsessão automotiva. Onde a engenharia de
+                    precisão encontra a estética pura.
                 </p>
-</div>
-</section>
-<!-- Manifesto / Story Section (Bento Grid) -->
-<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Large Story Block -->
-<div class="md:col-span-8 bg-surface-container-low border border-surface-container-highest p-lg hover-glow transition-shadow duration-500 relative overflow-hidden group">
-<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
-<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-lg">A ORIGEM DA VELOCIDADE</h2>
-<div class="space-y-6 font-body-md text-body-md text-on-surface-variant relative z-10">
-<p>
-                            Nascido nas ruas noturnas e forjado nas pistas de alta performance, o Oliveira Car Fest começou como um encontro clandestino para puristas que exigiam mais do que a indústria oferecia. Nossa história não é escrita com tinta, mas com borracha queimada e metal fundido.
+            </div>
+        </section>
+        <!-- Manifesto / Story Section (Bento Grid) -->
+        <section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+                <!-- Large Story Block -->
+                <div
+                    class="md:col-span-8 bg-surface-container-low border border-surface-container-highest p-lg hover-glow transition-shadow duration-500 relative overflow-hidden group">
+                    <div
+                        class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700">
+                    </div>
+                    <h2
+                        class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-lg">
+                        A ORIGEM DA VELOCIDADE</h2>
+                    <div class="space-y-6 font-body-md text-body-md text-on-surface-variant relative z-10">
+                        <p>
+                            Tudo começou com uma lembrança.
+
+                            Percebemos que a cultura automotiva já não era a mesma de anos atrás. Quando éramos
+                            crianças, os carros tinham um lugar especial na nossa comunidade. Os eventos reuniam
+                            famílias, amigos e apaixonados, e era comum ver crianças parando para admirar um carro
+                            diferente, conhecer novos modelos e simplesmente viver aquele momento.
+
+                            Hoje, sentimos que essa experiência estava se perdendo.
+
+                            As crianças do nosso bairro já não tinham as mesmas oportunidades que tivemos há cerca de 20
+                            anos. E foi justamente dessa percepção que surgiu a vontade de fazer algo diferente: trazer
+                            novamente para a comunidade um evento que celebrasse os carros, reunisse as pessoas e
+                            criasse momentos que pudessem ser lembrados por muitos anos.
+
+                            A ideia nasceu de uma conversa entre os organizadores, enquanto relembrávamos os eventos da
+                            nossa infância e as histórias que ficaram marcadas na memória. Entre tantas lembranças, uma
+                            delas se destacou: a chegada de uma Ferrari vermelha ao nosso bairro. Para nós, aquilo era
+                            muito mais do que apenas um carro. Era um acontecimento. Era a oportunidade de parar,
+                            admirar, conversar e compartilhar aquela experiência com outras pessoas.
+
+                            Foi desse sentimento que nasceu o Oliveira Car Fest.
+
+                            Um evento feito para todos: para quem entende de carros, para quem simplesmente admira, para
+                            as famílias, para as crianças e para toda a comunidade.
+
+                            Mais do que reunir veículos, queremos reunir pessoas, resgatar a cultura automotiva e criar
+                            novas memórias. E, ao mesmo tempo, movimentar o nosso bairro, valorizar os comerciantes
+                            locais e mostrar que um evento automotivo pode ser também um grande encontro da comunidade.
+
+                            Porque, no fim, não são apenas os carros que fazem uma história.
+
+                            São as pessoas, os momentos e as memórias que ficam.
                         </p>
-<p>
-                            Em menos de uma década, transformamos uma paixão marginal em um ecossistema global. Nossa missão é cristalina: unir os entusiastas mais dedicados sob uma única bandeira de excelência automotiva.
+                        <p>
+                            Em menos de uma década, transformamos uma paixão marginal em um ecossistema global. Nossa
+                            missão é cristalina: unir os entusiastas mais dedicados sob uma única bandeira de excelência
+                            automotiva.
                         </p>
-</div>
-</div>
-<!-- Mission/Vision Blocks -->
-<div class="md:col-span-4 flex flex-col gap-gutter">
-<!-- Mission -->
-<div class="flex-1 bg-surface-container p-md border-l-4 border-primary hover:bg-surface-container-highest transition-colors duration-300">
-<div class="flex items-center gap-sm mb-sm">
-<span class="material-symbols-outlined text-primary fill-icon">flag</span>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">MISSÃO</h3>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant">
-                            Unir a comunidade automotiva através de experiências imersivas, celebrando a arte e a engenharia dos motores.
+                    </div>
+                </div>
+                <!-- Mission/Vision Blocks -->
+                <div class="md:col-span-4 flex flex-col gap-gutter">
+                    <!-- Mission -->
+                    <div
+                        class="flex-1 bg-surface-container p-md border-l-4 border-primary hover:bg-surface-container-highest transition-colors duration-300">
+                        <div class="flex items-center gap-sm mb-sm">
+                            <span class="material-symbols-outlined text-primary fill-icon">flag</span>
+                            <h3 class="font-headline-sm text-headline-sm text-on-surface">MISSÃO</h3>
+                        </div>
+                        <p class="font-body-md text-body-md text-on-surface-variant">
+                            Unir a comunidade automotiva através de experiências imersivas, celebrando a arte e a
+                            engenharia dos motores.
                         </p>
-</div>
-<!-- Vision -->
-<div class="flex-1 glass-panel p-md hover-glow transition-all duration-300">
-<div class="flex items-center gap-sm mb-sm">
-<span class="material-symbols-outlined text-secondary fill-icon">visibility</span>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">VISÃO</h3>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant">
+                    </div>
+                    <!-- Vision -->
+                    <div class="flex-1 glass-panel p-md hover-glow transition-all duration-300">
+                        <div class="flex items-center gap-sm mb-sm">
+                            <span class="material-symbols-outlined text-secondary fill-icon">visibility</span>
+                            <h3 class="font-headline-sm text-headline-sm text-on-surface">VISÃO</h3>
+                        </div>
+                        <p class="font-body-md text-body-md text-on-surface-variant">
                             Estabelecer o padrão ouro global para eventos de cultura automotiva de alto rendimento.
                         </p>
-</div>
-</div>
-</div>
-</section>
-<!-- Divider with subtle technical aesthetic -->
-<div class="w-full h-px bg-gradient-to-r from-transparent via-outline-variant to-transparent my-md"></div>
-<!-- Team Section -->
-<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
-<div class="mb-xl text-center">
-<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">OUR TEAM</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Os arquitetos da performance.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<!-- Team Member 1 -->
-<div class="group relative overflow-hidden bg-surface-container-low border border-surface-container-highest">
-<div class="aspect-[3/4] w-full overflow-hidden">
-<img class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="A striking, high-contrast black and white portrait of a confident man in his late 30s. He has sharp features, a tailored dark jacket, and is looking slightly off-camera with intense focus. The lighting is harsh and dramatic, creating deep shadows on one side of his face. The background is a pure, deep infinite black. The overall style is premium, editorial, and reminiscent of high-end automotive lifestyle photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChVODgwev1hzTGcl2FfZR3dIpPl4qkvZRax3Fv5UhHd2ZjhQ02FBLJgbv3Qu5GoT6Dj1knMywsoovpPsEQtCX_gg-m_CGbmQ9ts8vP4prhj3ZThMLhJWqPJLKxKZnDFM68yfvca8wVa-P-MUUo7GcCg_qhVpKkmlEGF4zcdzoU9o7NVgEmdZT-QR3enWKEwko4X9yy7t2uibv_07umd_v0V9duOVNZNW-LMvU-dciqpvFwUBqWmemYjg"/>
-</div>
-<!-- Glass Overlay Info -->
-<div class="absolute bottom-0 left-0 w-full glass-panel p-md translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Marcus Vance</h3>
-<p class="font-label-sm text-label-sm uppercase text-primary tracking-widest">Fundador &amp; CEO</p>
-</div>
-</div>
-<!-- Team Member 2 -->
-<div class="group relative overflow-hidden bg-surface-container-low border border-surface-container-highest md:mt-lg">
-<div class="aspect-[3/4] w-full overflow-hidden">
-<img class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="A dramatic, high-contrast black and white portrait of a formidable woman in her 40s. She exudes authority and precision, wearing sleek, modern dark attire. Her gaze is direct and uncompromising. The lighting is stark, highlighting her strong jawline against a deep, infinite black background. The visual aesthetic is intensely premium, channeling the sleek, aggressive modernism of supercar design culture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2h6G9cGxc9yPRmIHHwCS5PdnHiamQBcfoSiXCbLFQC47zDiROVRkqkYKsr2NDrc7ib0LUVyQWBAH6_Y2nFWnhcNa9BrR0y-iVUTGxcjG0Sw--7BdwAPG8i1SWB4jcLIcg0iMmIFLvPkjQhNoGr-LHXCn_HJgb5WwhlhNG4U3j8NVv-mX6NOhrfqbHhSNhh0zaWFMuQ_2y79iIv3n7bITGDKOdrdajJBm_Qwordhj_9cHcELlK0gNiYg"/>
-</div>
-<div class="absolute bottom-0 left-0 w-full glass-panel p-md translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Elena Rostova</h3>
-<p class="font-label-sm text-label-sm uppercase text-primary tracking-widest">Diretora de Operações</p>
-</div>
-</div>
-<!-- Team Member 3 -->
-<div class="group relative overflow-hidden bg-surface-container-low border border-surface-container-highest">
-<div class="aspect-[3/4] w-full overflow-hidden">
-<img class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="A moody, high-contrast black and white portrait of a rugged yet sophisticated man in his early 30s. He is dressed in a dark, textured technical jacket. The lighting casts dramatic, sharp shadows, emphasizing a cool, calculating demeanor. The background is completely pitch black. The style is distinctly high-end editorial, aligning with a dark, modern, high-performance automotive brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJoQUe_2LFh_02WfAgTzWa2y14cXOarV2XGYQBpVY0QvmIcqRntVd5M_Q7nqGE1x9yS2emXSKFPSybbS1CAlJTewu11cVeC-8WcBVZnKycMG5otsqZkiDj0O5NJwmzaZjk8OZv5t6CO4sO9HbNTYIjAYs9N9euFgFmURiKjztgDxLvcJj9dZZAsyGw_Bv76fP1kY0JOUNo7vN_KOGsWYvtzjumZ_oQ98YYS_rc2Fsw4VEZHlE3xZqZPQ"/>
-</div>
-<div class="absolute bottom-0 left-0 w-full glass-panel p-md translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Jameson Wright</h3>
-<p class="font-label-sm text-label-sm uppercase text-primary tracking-widest">Diretor de Arte</p>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-surface-container-lowest w-full mt-xl border-t border-outline-variant">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-xl w-full max-w-[1440px] mx-auto">
-<!-- Brand & Copyright -->
-<div class="md:col-span-2 flex flex-col justify-between">
-<a class="font-headline-sm text-headline-sm font-black text-primary italic mb-md" href="#">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Divider with subtle technical aesthetic -->
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-outline-variant to-transparent my-md"></div>
+        <!-- Team Section -->
+        <section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+            <div class="mb-xl text-center">
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-sm">OUR TEAM</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">Os arquitetos da performance.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <!-- Team Member 1 -->
+                <div
+                    class="group relative overflow-hidden bg-surface-container-low border border-surface-container-highest">
+                    <div class="aspect-[3/4] w-full overflow-hidden">
+                        <img class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
+                            data-alt="A striking, high-contrast black and white portrait of a confident man in his late 30s. He has sharp features, a tailored dark jacket, and is looking slightly off-camera with intense focus. The lighting is harsh and dramatic, creating deep shadows on one side of his face. The background is a pure, deep infinite black. The overall style is premium, editorial, and reminiscent of high-end automotive lifestyle photography."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuChVODgwev1hzTGcl2FfZR3dIpPl4qkvZRax3Fv5UhHd2ZjhQ02FBLJgbv3Qu5GoT6Dj1knMywsoovpPsEQtCX_gg-m_CGbmQ9ts8vP4prhj3ZThMLhJWqPJLKxKZnDFM68yfvca8wVa-P-MUUo7GcCg_qhVpKkmlEGF4zcdzoU9o7NVgEmdZT-QR3enWKEwko4X9yy7t2uibv_07umd_v0V9duOVNZNW-LMvU-dciqpvFwUBqWmemYjg" />
+                    </div>
+                    <!-- Glass Overlay Info -->
+                    <div
+                        class="absolute bottom-0 left-0 w-full glass-panel p-md translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Marcus Vance</h3>
+                        <p class="font-label-sm text-label-sm uppercase text-primary tracking-widest">Fundador &amp; CEO
+                        </p>
+                    </div>
+                </div>
+                <!-- Team Member 2 -->
+                <div
+                    class="group relative overflow-hidden bg-surface-container-low border border-surface-container-highest md:mt-lg">
+                    <div class="aspect-[3/4] w-full overflow-hidden">
+                        <img class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
+                            data-alt="A dramatic, high-contrast black and white portrait of a formidable woman in her 40s. She exudes authority and precision, wearing sleek, modern dark attire. Her gaze is direct and uncompromising. The lighting is stark, highlighting her strong jawline against a deep, infinite black background. The visual aesthetic is intensely premium, channeling the sleek, aggressive modernism of supercar design culture."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2h6G9cGxc9yPRmIHHwCS5PdnHiamQBcfoSiXCbLFQC47zDiROVRkqkYKsr2NDrc7ib0LUVyQWBAH6_Y2nFWnhcNa9BrR0y-iVUTGxcjG0Sw--7BdwAPG8i1SWB4jcLIcg0iMmIFLvPkjQhNoGr-LHXCn_HJgb5WwhlhNG4U3j8NVv-mX6NOhrfqbHhSNhh0zaWFMuQ_2y79iIv3n7bITGDKOdrdajJBm_Qwordhj_9cHcELlK0gNiYg" />
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-full glass-panel p-md translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Elena Rostova</h3>
+                        <p class="font-label-sm text-label-sm uppercase text-primary tracking-widest">Diretora de
+                            Operações</p>
+                    </div>
+                </div>
+                <!-- Team Member 3 -->
+                <div
+                    class="group relative overflow-hidden bg-surface-container-low border border-surface-container-highest">
+                    <div class="aspect-[3/4] w-full overflow-hidden">
+                        <img class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
+                            data-alt="A moody, high-contrast black and white portrait of a rugged yet sophisticated man in his early 30s. He is dressed in a dark, textured technical jacket. The lighting casts dramatic, sharp shadows, emphasizing a cool, calculating demeanor. The background is completely pitch black. The style is distinctly high-end editorial, aligning with a dark, modern, high-performance automotive brand identity."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJoQUe_2LFh_02WfAgTzWa2y14cXOarV2XGYQBpVY0QvmIcqRntVd5M_Q7nqGE1x9yS2emXSKFPSybbS1CAlJTewu11cVeC-8WcBVZnKycMG5otsqZkiDj0O5NJwmzaZjk8OZv5t6CO4sO9HbNTYIjAYs9N9euFgFmURiKjztgDxLvcJj9dZZAsyGw_Bv76fP1kY0JOUNo7vN_KOGsWYvtzjumZ_oQ98YYS_rc2Fsw4VEZHlE3xZqZPQ" />
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-full glass-panel p-md translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Jameson Wright</h3>
+                        <p class="font-label-sm text-label-sm uppercase text-primary tracking-widest">Diretor de Arte
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest w-full mt-xl border-t border-outline-variant">
+        <div
+            class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-xl w-full max-w-[1440px] mx-auto">
+            <!-- Brand & Copyright -->
+            <div class="md:col-span-2 flex flex-col justify-between">
+                <a class="font-headline-sm text-headline-sm font-black text-primary italic mb-md" href="#">
                     OLIVEIRA CAR FEST
                 </a>
-<p class="font-body-md text-body-md text-on-surface-variant mt-auto">
+                <p class="font-body-md text-body-md text-on-surface-variant mt-auto">
                     © 2024 OLIVEIRA CAR FEST. ENGINEERED FOR EXCELLENCE.
                 </p>
-</div>
-<!-- Links Column 1 -->
-<div class="flex flex-col gap-sm">
-<h4 class="font-label-sm text-label-sm uppercase text-on-surface tracking-widest mb-xs">Legal</h4>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 duration-200 block" href="#">Termos de Uso</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 duration-200 block" href="#">Privacidade</a>
-</div>
-<!-- Links Column 2 -->
-<div class="flex flex-col gap-sm">
-<h4 class="font-label-sm text-label-sm uppercase text-on-surface tracking-widest mb-xs">Suporte</h4>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 duration-200 block" href="#">FAQ</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 duration-200 block" href="#">Imprensa</a>
-</div>
-</div>
-</footer>
-<script>
+            </div>
+            <!-- Links Column 1 -->
+            <div class="flex flex-col gap-sm">
+                <h4 class="font-label-sm text-label-sm uppercase text-on-surface tracking-widest mb-xs">Legal</h4>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 duration-200 block"
+                    href="#">Termos de Uso</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 duration-200 block"
+                    href="#">Privacidade</a>
+            </div>
+            <!-- Links Column 2 -->
+            <div class="flex flex-col gap-sm">
+                <h4 class="font-label-sm text-label-sm uppercase text-on-surface tracking-widest mb-xs">Suporte</h4>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 duration-200 block"
+                    href="#">FAQ</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80 hover:translate-x-1 duration-200 block"
+                    href="#">Imprensa</a>
+            </div>
+        </div>
+    </footer>
+    <script>
         // Simple mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
 
         // Sticky nav background transition on scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const nav = document.getElementById('main-nav');
             if (window.scrollY > 20) {
                 nav.classList.add('shadow-lg');
@@ -336,4 +435,6 @@
             }
         });
     </script>
-</body></html>
+</body>
+
+</html>

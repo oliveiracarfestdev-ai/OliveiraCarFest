@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { supabasePublic } from "@/lib/supabase/public";
 import Link from "next/link";
+import { EmptyState } from '@/components/ui/empty-state';
 
 export const revalidate = 60; // 1 minute cache
 
@@ -39,22 +40,31 @@ export default async function Patrocinadores() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-items-center opacity-70">
             {sponsors?.map((sponsor) => (
-              <a 
+              <Link 
                 key={sponsor.id} 
-                href={sponsor.website_url} 
-                target="_blank" 
-                rel="noreferrer"
+                href={`/patrocinadores/${sponsor.id}`} 
                 aria-label={`${sponsor.name} - Patrocinador Categoria ${sponsor.category}`}
                 className="h-24 w-full bg-card/40 backdrop-blur-md border border-border/50 hover-glow flex flex-col items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer rounded-sm group relative"
               >
-                <span className="font-heading text-2xl font-bold text-foreground tracking-widest">{sponsor.name}</span>
+                {sponsor.logo_url ? (
+                  <img src={sponsor.logo_url} alt={sponsor.name} className="max-h-16 max-w-[80%] object-contain mb-2" />
+                ) : (
+                  <span className="font-heading text-2xl font-bold text-foreground tracking-widest px-4 text-center truncate w-full">{sponsor.name}</span>
+                )}
                 <span className="absolute bottom-2 text-[10px] text-muted-foreground uppercase opacity-0 group-hover:opacity-100 transition-opacity">{sponsor.category}</span>
-              </a>
+              </Link>
             ))}
             
-            {!sponsors || sponsors.length === 0 && (
-              <div className="col-span-full py-12">
-                <p className="text-muted-foreground">Nenhum parceiro encontrado.</p>
+
+            {(!sponsors || sponsors.length === 0) && (
+              <div className="col-span-full w-full">
+                <EmptyState 
+                  icon="handshake" 
+                  title="Seja o Primeiro" 
+                  description="Ainda não temos parceiros listados. Esta é a sua chance de ter visibilidade máxima em nossos eventos." 
+                  actionLabel="Manifestar Interesse"
+                  actionHref="#manifestar-interesse"
+                />
               </div>
             )}
           </div>
@@ -82,7 +92,7 @@ export default async function Patrocinadores() {
                   <div className="bg-card/40 backdrop-blur-md border border-border/50 p-6 hover-glow rounded-sm">
                     <span className="material-symbols-outlined text-4xl text-primary mb-4 block">handshake</span>
                     <h3 className="font-sans text-sm font-bold uppercase mb-2">Networking de Elite</h3>
-                    <p className="font-sans text-sm text-muted-foreground">Acesso exclusivo a lounges VIP e jantares de gala, conectando você com líderes da indústria.</p>
+                    <p className="font-sans text-sm text-muted-foreground">Acesso aos eventos, conectando você com os demais empreendedores da região.</p>
                   </div>
                   <div className="bg-card/40 backdrop-blur-md border border-border/50 p-6 hover-glow rounded-sm">
                     <span className="material-symbols-outlined text-4xl text-primary mb-4 block">workspace_premium</span>
@@ -104,10 +114,12 @@ export default async function Patrocinadores() {
                   <span className="material-symbols-outlined group-hover/btn:translate-x-2 transition-transform">arrow_forward</span>
                 </Link>
                 
-                <Button variant="outline" type="button" className="mt-4 font-sans text-sm uppercase tracking-wider py-6 px-12 flex items-center justify-center gap-2 rounded-none border-2 border-border hover:border-primary hover:text-primary transition-all">
-                  <span className="material-symbols-outlined text-lg">download</span>
-                  <span>BAIXAR MEDIA KIT</span>
-                </Button>
+                <a href="/media-kit.pdf" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" type="button" className="mt-4 font-sans text-sm uppercase tracking-wider py-6 px-12 flex items-center justify-center gap-2 rounded-none border-2 border-border hover:border-primary hover:text-primary transition-all">
+                    <span className="material-symbols-outlined text-lg">download</span>
+                    <span>BAIXAR MEDIA KIT</span>
+                  </Button>
+                </a>
               </div>
             </div>
           </div>

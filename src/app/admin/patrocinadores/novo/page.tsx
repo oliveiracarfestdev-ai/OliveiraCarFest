@@ -57,6 +57,11 @@ export default function NovoPatrocinadorPage() {
             <input name="logo" type="file" accept="image/*" className="w-full bg-background border border-border/50 p-3 text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-xs file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20" />
           </div>
 
+          <div className="space-y-2">
+            <label className="font-sans text-xs uppercase text-muted-foreground">Descrição / Detalhes</label>
+            <textarea name="description" rows={4} placeholder="Informações sobre a empresa, produtos, serviços..." className="w-full bg-background border border-border/50 p-3 text-sm text-foreground focus:border-primary outline-none resize-y" />
+          </div>
+
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <label className="font-sans text-xs uppercase text-muted-foreground">Website (URL)</label>

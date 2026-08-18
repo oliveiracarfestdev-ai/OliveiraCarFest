@@ -3,13 +3,14 @@
 import { createClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { uploadFile } from '@/lib/supabase/storage'
+import { uploadFile, deleteFile } from '@/lib/supabase/storage'
 import { z } from 'zod'
 import { requireAdmin } from '@/lib/supabase/auth-guard'
 
 const gallerySchema = z.object({
   title: z.string().min(2, 'Título é obrigatório'),
   event_id: z.string().uuid('Selecione um evento válido'),
+  category: z.string().optional().default('Todos'),
 })
 
 export async function createAlbum(formData: FormData) {
@@ -19,6 +20,7 @@ export async function createAlbum(formData: FormData) {
   const data = {
     title: formData.get('title') as string,
     event_id: formData.get('event_id') as string,
+    category: formData.get('category') as string,
   }
 
   const parsed = gallerySchema.safeParse(data)
@@ -72,10 +74,45 @@ export async function createAlbum(formData: FormData) {
 export async function deleteAlbum(id: string) {
   await requireAdmin()
   const supabase = await createClient()
+
+  // Buscar álbum (para capa) e fotos (para as imagens da galeria)
+  const { data: album } = await supabase.from('albums').select('cover_url').eq('id', id).single()
+  const { data: photos } = await supabase.from('photos').select('image_url').eq('album_id', id)
+
   const { error } = await supabase.from('albums').delete().eq('id', id)
   
   if (error) {
     return { error: 'Erro ao deletar' }
+  }
+
+  // Deletar a capa
+  if (album?.cover_url) {
+    try {
+      const urlObj = new URL(album.cover_url)
+      const pathParts = urlObj.pathname.split('/gallery-images/')
+      if (pathParts.length > 1) {
+        await deleteFile('gallery-images', pathParts[1])
+      }
+    } catch (e) {
+      console.error('Erro ao deletar capa órfã:', e)
+    }
+  }
+
+  // Deletar as fotos
+  if (photos && photos.length > 0) {
+    for (const p of photos) {
+      if (p.image_url) {
+        try {
+          const urlObj = new URL(p.image_url)
+          const pathParts = urlObj.pathname.split('/gallery-images/')
+          if (pathParts.length > 1) {
+            await deleteFile('gallery-images', pathParts[1])
+          }
+        } catch (e) {
+          console.error('Erro ao deletar foto órfã:', e)
+        }
+      }
+    }
   }
   
   revalidatePath('/admin/galerias')

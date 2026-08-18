@@ -1,6 +1,8 @@
 import { getPortalSession, logoutPortal } from '@/app/actions/portal'
 import { redirect } from 'next/navigation'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { QRCodeSVG } from 'qrcode.react'
 
 export default async function PortalDashboard() {
   const leads = await getPortalSession()
@@ -62,10 +64,15 @@ export default async function PortalDashboard() {
                           <p className="font-sans text-xl font-bold uppercase text-foreground">{lead.car_model} <span className="text-muted-foreground text-sm font-normal">| {lead.car_year}</span></p>
                         </div>
                         
-                        <div>
-                          <p className="font-sans text-xs uppercase text-muted-foreground font-bold">Placa de Acesso</p>
-                          <div className="inline-block bg-background border border-border/50 px-4 py-2 rounded-sm mt-1">
-                            <p className="font-mono text-xl font-bold uppercase tracking-[0.3em]">{lead.car_plate}</p>
+                        <div className="flex justify-between items-end">
+                          <div>
+                            <p className="font-sans text-xs uppercase text-muted-foreground font-bold">Placa de Acesso</p>
+                            <div className="inline-block bg-background border border-border/50 px-4 py-2 rounded-sm mt-1">
+                              <p className="font-mono text-xl font-bold uppercase tracking-[0.3em]">{lead.car_plate}</p>
+                            </div>
+                          </div>
+                          <div className="bg-white p-2 rounded-sm">
+                            <QRCodeSVG value={lead.id} size={64} level="L" />
                           </div>
                         </div>
 
@@ -78,6 +85,16 @@ export default async function PortalDashboard() {
                             <p className="font-sans text-xs uppercase text-muted-foreground font-bold">Local</p>
                             <p className="font-sans font-bold text-foreground">{eventLocation}</p>
                           </div>
+                          {lead.donation_choice && (
+                            <div className="col-span-2 pt-2 border-t border-border/10 mt-2">
+                              <p className="font-sans text-xs uppercase text-muted-foreground font-bold flex items-center gap-1 mb-1">
+                                <span className="material-symbols-outlined text-[14px]">volunteer_activism</span> Acesso Solidário
+                              </p>
+                              <p className="font-sans font-bold text-primary bg-primary/10 inline-block px-3 py-1 rounded-sm border border-primary/20">
+                                {lead.donation_choice}
+                              </p>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -128,10 +145,10 @@ export default async function PortalDashboard() {
                 <p className="font-sans text-sm text-muted-foreground mb-4">
                   Nossa equipe de curadoria está disponível para esclarecer qualquer dúvida sobre sua exposição.
                 </p>
-                <a href="mailto:comms@oliveiracarfest.com" className="inline-flex items-center gap-2 text-primary hover:underline font-bold text-sm">
+                <Link href="/contato" className="inline-flex items-center gap-2 text-primary hover:underline font-bold text-sm">
                   <span className="material-symbols-outlined text-base">mail</span>
                   Falar com a Curadoria
-                </a>
+                </Link>
               </div>
             </div>
           </div>

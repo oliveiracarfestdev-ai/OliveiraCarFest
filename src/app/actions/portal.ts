@@ -6,7 +6,11 @@ import { redirect } from 'next/navigation'
 import { rateLimit } from '@/lib/rate-limit'
 import crypto from 'crypto'
 
-const SECRET = process.env.PORTAL_SESSION_SECRET || 'default_dev_secret_please_change'
+const SECRET = process.env.PORTAL_SESSION_SECRET || (process.env.NODE_ENV !== 'production' ? 'default_dev_secret_please_change' : '')
+
+if (!SECRET) {
+  throw new Error('A variável de ambiente PORTAL_SESSION_SECRET é obrigatória em produção.')
+}
 
 function signSession(data: string) {
   const hmac = crypto.createHmac('sha256', SECRET)

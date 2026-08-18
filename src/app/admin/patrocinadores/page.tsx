@@ -9,10 +9,10 @@ export default async function PatrocinadoresAdmin() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="font-heading text-2xl uppercase font-bold text-foreground">Gerenciar Patrocinadores</h1>
-        <Link href="/admin/patrocinadores/novo">
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-sans uppercase font-bold rounded-none clip-corner flex items-center gap-2">
+        <Link href="/admin/patrocinadores/novo" className="w-full sm:w-auto">
+          <Button className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-sans uppercase font-bold rounded-none clip-corner flex items-center justify-center gap-2">
             <span className="material-symbols-outlined text-sm">add</span>
             Novo Patrocinador
           </Button>
@@ -41,7 +41,12 @@ export default async function PatrocinadoresAdmin() {
                     ) : '-'}
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <DeleteSponsorButton id={sponsor.id} />
+                    <div className="flex items-center justify-end gap-2">
+                      <Link href={`/admin/patrocinadores/${sponsor.id}/editar`} className="text-muted-foreground hover:text-primary transition-colors flex items-center justify-center w-8 h-8 rounded-sm hover:bg-primary/10">
+                        <span className="material-symbols-outlined text-[18px]">edit</span>
+                      </Link>
+                      <DeleteSponsorButton id={sponsor.id} />
+                    </div>
                   </td>
                 </tr>
               ))}

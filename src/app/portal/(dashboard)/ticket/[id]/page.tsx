@@ -2,6 +2,7 @@ import { getPortalSession } from '@/app/actions/portal'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { PrintButton } from './print-button'
+import { QRCodeSVG } from 'qrcode.react'
 
 export default async function TicketPage({ params }: { params: { id: string } }) {
   const leads = await getPortalSession()
@@ -42,9 +43,14 @@ export default async function TicketPage({ params }: { params: { id: string } })
               <h2 className="font-heading text-4xl font-black uppercase text-black">Oliveira Car Fest</h2>
               <p className="font-sans text-xl font-bold uppercase text-black mt-2 bg-gray-200 inline-block px-3 py-1">{eventName}</p>
             </div>
-            <div className="text-right">
-              <p className="font-sans text-sm uppercase tracking-widest text-gray-500 font-bold mb-1">Categoria</p>
-              <p className="font-heading text-3xl font-black uppercase text-black">Expositor</p>
+            <div className="text-right flex flex-col items-end gap-2">
+              <div>
+                <p className="font-sans text-sm uppercase tracking-widest text-gray-500 font-bold mb-1">Categoria</p>
+                <p className="font-heading text-3xl font-black uppercase text-black">Expositor</p>
+              </div>
+              <div className="mt-2 p-2 bg-white border-2 border-black inline-block">
+                <QRCodeSVG value={targetLead.id} size={80} level={"H"} />
+              </div>
             </div>
           </div>
 

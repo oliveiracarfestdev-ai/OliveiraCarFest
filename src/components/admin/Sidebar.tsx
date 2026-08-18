@@ -5,11 +5,13 @@ import { usePathname } from 'next/navigation'
 
 const navItems = [
   { name: 'Dashboard', href: '/admin', icon: 'dashboard' },
+  { name: 'Validação', href: '/admin/validacao', icon: 'qr_code_scanner' },
   { name: 'Eventos', href: '/admin/eventos', icon: 'event' },
   { name: 'Galerias', href: '/admin/galerias', icon: 'collections' },
   { name: 'Patrocinadores', href: '/admin/patrocinadores', icon: 'handshake' },
   { name: 'Expositores', href: '/admin/expositores', icon: 'garage' },
   { name: 'Leads e Contatos', href: '/admin/leads', icon: 'mail' },
+  { name: 'Configurações', href: '/admin/configuracoes', icon: 'settings' },
 ]
 
 export function Sidebar() {

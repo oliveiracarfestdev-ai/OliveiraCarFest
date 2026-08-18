@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
 import imageCompression from 'browser-image-compression'
+import { toast } from 'sonner'
 
 interface EventData {
   id: string;
@@ -14,15 +15,18 @@ interface EventData {
   date: string;
   location: string;
   donation_items?: string | null;
+  max_exhibitors?: number | null;
+  available_spots?: number | null;
 }
 
 export function ExhibitorForm({ events }: { events: EventData[] }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null)
   const [selectedEventId, setSelectedEventId] = useState<string>('')
 
   const selectedEvent = events.find(e => e.id === selectedEventId)
   const donationOptions = selectedEvent?.donation_items ? selectedEvent.donation_items.split(',').map(i => i.trim()).filter(Boolean) : []
+  
+  const hasAvailableSpots = selectedEvent ? (selectedEvent.available_spots ?? 50) > 0 : true;
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -31,7 +35,6 @@ export function ExhibitorForm({ events }: { events: EventData[] }) {
     const formElement = event.currentTarget
     
     setIsSubmitting(true)
-    setMessage(null)
 
     try {
       const originalFormData = new FormData(formElement)
@@ -50,14 +53,14 @@ export function ExhibitorForm({ events }: { events: EventData[] }) {
       const result = await createExhibitorLead(originalFormData)
 
       if (result?.error) {
-        setMessage({ type: 'error', text: result.error })
+        toast.error(result.error)
       } else if (result?.success) {
-        setMessage({ type: 'success', text: 'Inscrição enviada com sucesso! Aguarde nosso contato via WhatsApp ou E-mail para confirmação da vaga.' })
+        toast.success('Inscrição enviada com sucesso! Aguarde nosso contato via WhatsApp ou E-mail para confirmação da vaga.')
         formElement.reset()
       }
     } catch (e: any) {
       console.error(e)
-      setMessage({ type: 'error', text: 'Erro ao processar a imagem do carro.' })
+      toast.error('Erro ao processar a imagem do carro.')
     } finally {
       setIsSubmitting(false)
     }
@@ -65,8 +68,15 @@ export function ExhibitorForm({ events }: { events: EventData[] }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-2">
-        <label htmlFor="event_id" className="text-sm font-sans uppercase font-bold tracking-widest text-primary">Selecione o Evento</label>
+      <div className="space-y-2 relative">
+        <div className="flex justify-between items-end mb-2">
+          <label htmlFor="event_id" className="text-sm font-sans uppercase font-bold tracking-widest text-primary">Selecione o Evento</label>
+          {selectedEvent && (
+            <span className={`text-xs font-bold px-2 py-1 uppercase tracking-widest ${hasAvailableSpots ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'}`}>
+              {hasAvailableSpots ? `${selectedEvent.available_spots} Vagas Restantes` : 'LOTADO'}
+            </span>
+          )}
+        </div>
         <select 
           id="event_id" 
           name="event_id" 
@@ -78,9 +88,10 @@ export function ExhibitorForm({ events }: { events: EventData[] }) {
           <option value="">Escolha um evento...</option>
           {events.map((evt) => {
             const d = new Date(evt.date + 'T12:00:00').toLocaleDateString('pt-BR');
+            const isFull = (evt.available_spots ?? 50) <= 0;
             return (
-              <option key={evt.id} value={evt.id}>
-                {evt.title} - {d} ({evt.location})
+              <option key={evt.id} value={evt.id} disabled={isFull}>
+                {evt.title} - {d} ({evt.location}) {isFull ? '[LOTADO]' : ''}
               </option>
             )
           })}
@@ -169,15 +180,11 @@ export function ExhibitorForm({ events }: { events: EventData[] }) {
         </div>
       )}
 
-      {message && (
-        <div className={`p-4 rounded-sm border ${message.type === 'success' ? 'bg-green-500/10 border-green-500/50 text-green-400' : 'bg-red-500/10 border-red-500/50 text-red-400'}`}>
-          <p className="font-sans text-sm font-medium">{message.text}</p>
-        </div>
-      )}
+
 
       <Button 
         type="submit" 
-        disabled={isSubmitting}
+        disabled={isSubmitting || (selectedEvent ? !hasAvailableSpots : false)}
         className="w-full bg-primary text-primary-foreground font-sans uppercase tracking-wider py-6 hover:bg-primary/90 transition-all glow-hover"
       >
         {isSubmitting ? 'Enviando...' : 'Submeter Projeto para Avaliação'}

@@ -16,7 +16,8 @@ export default async function Galeria() {
       image_url,
       album_id,
       albums (
-        title
+        title,
+        category
       )
     `)
     .order('created_at', { ascending: false });
@@ -28,20 +29,14 @@ export default async function Galeria() {
         {/* Header Section */}
         <section className="mb-12 pt-12 text-center md:text-left">
           <h1 className="font-heading text-5xl md:text-7xl font-black text-foreground uppercase mb-4">
-            CULTURA <span className="text-primary">NOTURNA</span>
+            GALERIA <span className="text-primary">OFICIAL</span>
           </h1>
           <p className="font-sans text-lg text-muted-foreground max-w-2xl">
-            Um olhar cru e sem filtros sobre a cultura automotiva underground. Momentos de alta octanagem capturados na meia-noite urbana, apresentando as máquinas que dominam as ruas quando a cidade dorme.
+            O acervo oficial do Oliveira Car Fest. Confira as coberturas fotográficas dos nossos encontros e os projetos em destaque.
           </p>
         </section>
 
-        {/* Filters */}
-        <section className="mb-12 flex flex-wrap gap-4 md:gap-6 justify-center md:justify-start">
-          <button className="border-b-2 border-primary text-primary font-sans text-sm uppercase pb-1 px-2 font-bold transition-all">Todos</button>
-          <button className="border-b-2 border-transparent text-muted-foreground hover:text-primary hover:border-primary/30 font-sans text-sm uppercase pb-1 px-2 transition-all">Rebaixados</button>
-          <button className="border-b-2 border-transparent text-muted-foreground hover:text-primary hover:border-primary/30 font-sans text-sm uppercase pb-1 px-2 transition-all">Performance</button>
-          <button className="border-b-2 border-transparent text-muted-foreground hover:text-primary hover:border-primary/30 font-sans text-sm uppercase pb-1 px-2 transition-all">Clássicos</button>
-        </section>
+        {/* Masonry Grid (Client Component) com Filtros Embutidos */}
 
         {/* Masonry Grid (Client Component) */}
         <GalleryGrid photos={(photos as any) || []} />

@@ -6,10 +6,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { contactSchema, ContactFormData } from '@/lib/validations/contact'
 import { submitContactForm } from '@/app/actions/contact'
+import { toast } from 'sonner'
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string } | null>(null)
 
   const {
     register,
@@ -22,15 +22,14 @@ export function ContactForm() {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
-    setSubmitStatus(null)
 
     const result = await submitContactForm(data)
 
     if (result.success) {
-      setSubmitStatus({ success: true, message: 'Transmissão enviada com sucesso. Aguarde nosso retorno.' })
+      toast.success('Transmissão enviada com sucesso. Aguarde nosso retorno.')
       reset()
     } else {
-      setSubmitStatus({ success: false, message: result.error || 'Erro ao enviar. Tente novamente.' })
+      toast.error(result.error || 'Erro ao enviar. Tente novamente.')
     }
 
     setIsSubmitting(false)
@@ -38,11 +37,6 @@ export function ContactForm() {
 
   return (
     <form className="space-y-10 relative z-10" onSubmit={handleSubmit(onSubmit)}>
-      {submitStatus && (
-        <div className={`p-4 rounded-sm font-sans text-sm ${submitStatus.success ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'}`}>
-          {submitStatus.message}
-        </div>
-      )}
       
       <div className="relative">
         <label className="font-sans text-xs text-muted-foreground uppercase absolute -top-5 left-0" htmlFor="name">Seu Nome</label>
