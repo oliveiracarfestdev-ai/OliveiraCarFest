@@ -5,7 +5,7 @@ export default function Sobre() {
   return (
     <>
       <Header />
-      <main className="flex-grow pt-[80px]">
+      <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">

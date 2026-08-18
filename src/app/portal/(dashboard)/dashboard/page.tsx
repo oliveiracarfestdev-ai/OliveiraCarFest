@@ -14,7 +14,7 @@ export default async function PortalDashboard() {
   const primaryLead = leads[0] // Para pegar o nome do dono, que será o mesmo
 
   return (
-    <main className="flex-grow pt-[40px] md:pt-[80px] min-h-screen relative overflow-hidden bg-background">
+    <main className="flex-grow min-h-screen relative overflow-hidden bg-background">
       <div className="absolute inset-0 bg-background z-0"></div>
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-green-500/5 rounded-full blur-[100px] z-0 pointer-events-none"></div>
         

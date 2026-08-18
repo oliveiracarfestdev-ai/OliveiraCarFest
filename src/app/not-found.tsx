@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <main className="flex-grow pt-[80px] flex items-center justify-center min-h-[80vh]">
+      <main className="flex-grow min-h-[80vh] flex flex-col items-center justify-center px-4 bg-background">
         <div className="text-center px-4 max-w-2xl mx-auto space-y-6">
           <div className="font-heading text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
             404

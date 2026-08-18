@@ -71,7 +71,7 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
-      <main className="flex-grow pt-[80px]">
+      <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative w-full h-[90vh] min-h-[600px] flex items-end pb-32 justify-center overflow-hidden">
           {/* Background Image */}

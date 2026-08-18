@@ -1,13 +1,23 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { Button } from '@/components/ui/button'
 import { signIn } from '@/app/actions/auth'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 
-export default function LoginPage() {
+function LoginForm() {
+  const searchParams = useSearchParams()
+  const urlError = searchParams.get('error')
+  
   const [error, setError] = useState<string | null>(null)
   const [isPending, setIsPending] = useState(false)
+
+  useEffect(() => {
+    if (urlError === 'unauthorized') {
+      setError('Acesso negado. Seu usuário não possui permissão de administrador.')
+    }
+  }, [urlError])
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -23,6 +33,55 @@ export default function LoginPage() {
     }
   }
 
+  return (
+    <form className="space-y-6" onSubmit={handleSubmit}>
+      {error && (
+        <div className="p-4 bg-red-500/10 border border-red-500/20 text-red-500 text-sm font-sans rounded-sm">
+          {error}
+        </div>
+      )}
+      
+      <div className="relative">
+        <label className="font-sans text-xs text-muted-foreground uppercase absolute -top-5 left-0" htmlFor="email">Identificação</label>
+        <input 
+          className="w-full bg-transparent border-none border-b-2 border-border focus:border-primary py-3 px-0 text-foreground font-sans transition-colors outline-none" 
+          id="email" 
+          name="email"
+          placeholder="admin@oliveiracarfest.com" 
+          type="email"
+          required 
+        />
+      </div>
+      
+      <div className="relative pt-4">
+        <label className="font-sans text-xs text-muted-foreground uppercase absolute top-0 left-0" htmlFor="password">Chave de Acesso</label>
+        <input 
+          className="w-full bg-transparent border-none border-b-2 border-border focus:border-primary py-3 px-0 text-foreground font-sans transition-colors outline-none" 
+          id="password" 
+          name="password"
+          placeholder="••••••••" 
+          type="password"
+          required 
+        />
+      </div>
+      
+      <Button 
+        type="submit" 
+        disabled={isPending}
+        className="w-full py-6 flex items-center justify-center gap-3 group mt-8 bg-primary hover:bg-primary/90 text-primary-foreground rounded-none clip-corner transition-all disabled:opacity-70"
+      >
+        <span className="font-sans text-sm uppercase font-bold tracking-widest">
+          {isPending ? 'Autenticando...' : 'Entrar no Sistema'}
+        </span>
+        <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">
+          {isPending ? 'sync' : 'login'}
+        </span>
+      </Button>
+    </form>
+  )
+}
+
+export default function LoginPage() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden px-4">
       {/* Background decoration */}
@@ -47,50 +106,9 @@ export default function LoginPage() {
             Acesso Restrito
           </h2>
           
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            {error && (
-              <div className="p-4 bg-red-500/10 border border-red-500/20 text-red-500 text-sm font-sans rounded-sm">
-                {error}
-              </div>
-            )}
-            
-            <div className="relative">
-              <label className="font-sans text-xs text-muted-foreground uppercase absolute -top-5 left-0" htmlFor="email">Identificação</label>
-              <input 
-                className="w-full bg-transparent border-none border-b-2 border-border focus:border-primary py-3 px-0 text-foreground font-sans transition-colors outline-none" 
-                id="email" 
-                name="email"
-                placeholder="admin@oliveiracarfest.com" 
-                type="email"
-                required 
-              />
-            </div>
-            
-            <div className="relative pt-4">
-              <label className="font-sans text-xs text-muted-foreground uppercase absolute top-0 left-0" htmlFor="password">Chave de Acesso</label>
-              <input 
-                className="w-full bg-transparent border-none border-b-2 border-border focus:border-primary py-3 px-0 text-foreground font-sans transition-colors outline-none" 
-                id="password" 
-                name="password"
-                placeholder="••••••••" 
-                type="password"
-                required 
-              />
-            </div>
-            
-            <Button 
-              type="submit" 
-              disabled={isPending}
-              className="w-full py-6 flex items-center justify-center gap-3 group mt-8 bg-primary hover:bg-primary/90 text-primary-foreground rounded-none clip-corner transition-all disabled:opacity-70"
-            >
-              <span className="font-sans text-sm uppercase font-bold tracking-widest">
-                {isPending ? 'Autenticando...' : 'Entrar no Sistema'}
-              </span>
-              <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">
-                {isPending ? 'sync' : 'login'}
-              </span>
-            </Button>
-          </form>
+          <Suspense fallback={<div className="text-center p-4">Carregando...</div>}>
+            <LoginForm />
+          </Suspense>
         </div>
         <p className="text-center mt-6 font-sans text-xs text-muted-foreground">
           Acesso exclusivo para staff e organizadores.

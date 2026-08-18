@@ -21,7 +21,7 @@ export default function Error({
   return (
     <>
       <Header />
-      <main className="flex-grow pt-[80px] min-h-[80vh] flex flex-col items-center justify-center px-4 bg-background">
+      <main className="flex-grow min-h-[80vh] flex flex-col items-center justify-center px-4 bg-background">
         <div className="max-w-2xl text-center space-y-6 bg-card p-12 border border-border/50 rounded-sm">
           <span className="material-symbols-outlined text-primary text-6xl opacity-80 mb-4 block">warning</span>
           <h2 className="font-heading text-4xl uppercase font-black text-foreground">Sistemas Indisponíveis</h2>

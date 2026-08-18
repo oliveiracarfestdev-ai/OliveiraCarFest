@@ -6,7 +6,7 @@ export default function SejaPatrocinador() {
   return (
     <>
       <Header />
-      <main className="min-h-screen pt-[80px] bg-background">
+      <main className="flex-grow min-h-screen py-16 px-4 bg-background relative overflow-hidden">
         
         {/* Hero Section */}
         <section className="relative w-full py-24 flex items-center justify-center overflow-hidden">
