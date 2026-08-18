@@ -56,6 +56,7 @@ export default async function PatrocinadorDetalhesPage({ params }: { params: Pro
                   src={sponsor.logo_url} 
                   alt={sponsor.name} 
                   fill
+                  sizes="(max-width: 768px) 192px, 256px"
                   className="object-contain p-4"
                 />
               ) : (

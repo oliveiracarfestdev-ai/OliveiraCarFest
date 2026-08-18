@@ -4,8 +4,10 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { createSponsor } from '@/app/actions/sponsors'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function NovoPatrocinadorPage() {
+  const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -20,6 +22,9 @@ export default function NovoPatrocinadorPage() {
     if (result?.error) {
       setError(result.error)
       setIsSubmitting(false)
+    } else if (result?.success) {
+      router.push('/admin/patrocinadores')
+      router.refresh()
     }
   }
 

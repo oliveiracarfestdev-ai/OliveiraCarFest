@@ -58,7 +58,7 @@ export async function createSponsor(formData: FormData) {
 
   revalidatePath('/admin/patrocinadores')
   revalidatePath('/patrocinadores')
-  redirect('/admin/patrocinadores')
+  return { success: true }
 }
 
 export async function deleteSponsor(id: string) {
@@ -156,5 +156,5 @@ export async function updateSponsor(id: string, formData: FormData) {
 
   revalidatePath('/admin/patrocinadores')
   revalidatePath('/patrocinadores')
-  redirect('/admin/patrocinadores')
+  return { success: true }
 }

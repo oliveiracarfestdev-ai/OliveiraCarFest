@@ -5,8 +5,10 @@ import { Button } from '@/components/ui/button'
 import { updateSponsor } from '@/app/actions/sponsors'
 import Link from 'next/link'
 import imageCompression from 'browser-image-compression'
+import { useRouter } from 'next/navigation'
 
 export default function EditSponsorForm({ sponsor }: { sponsor: any }) {
+  const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -33,6 +35,9 @@ export default function EditSponsorForm({ sponsor }: { sponsor: any }) {
       
       if (result?.error) {
         setError(result.error)
+      } else if (result?.success) {
+        router.push('/admin/patrocinadores')
+        router.refresh()
       }
     } catch (err: any) {
       console.error(err)
