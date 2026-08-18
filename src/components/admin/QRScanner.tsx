@@ -53,11 +53,9 @@ export function QRScanner() {
       ) : (
         <div className="relative rounded-sm overflow-hidden border-2 border-primary bg-black">
           <Scanner 
-            onResult={(text) => handleScan(text)} 
+            onScan={(detectedCodes) => handleScan(detectedCodes[0].rawValue)} 
             onError={(error) => console.log(error?.message)}
-            options={{
-              delayBetweenScanAttempts: 1000,
-            }}
+            scanDelay={1000}
           />
           <button
             onClick={() => setIsScanning(false)}

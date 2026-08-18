@@ -46,6 +46,9 @@ export interface Database {
           banner_url: string
           is_next_event: boolean
           donation_items: string | null
+          category: string | null
+          accepting_registrations: boolean
+          max_exhibitors: number
           created_at: string | null
         }
         Insert: {
@@ -59,6 +62,9 @@ export interface Database {
           banner_url: string
           is_next_event?: boolean
           donation_items?: string | null
+          category?: string | null
+          accepting_registrations?: boolean
+          max_exhibitors?: number
           created_at?: string | null
         }
         Update: {
@@ -72,6 +78,9 @@ export interface Database {
           banner_url?: string
           is_next_event?: boolean
           donation_items?: string | null
+          category?: string | null
+          accepting_registrations?: boolean
+          max_exhibitors?: number
           created_at?: string | null
         }
         Relationships: []
@@ -82,6 +91,7 @@ export interface Database {
           event_id: string
           title: string
           cover_url: string
+          category: string | null
           created_at: string | null
         }
         Insert: {
@@ -89,6 +99,7 @@ export interface Database {
           event_id: string
           title: string
           cover_url: string
+          category?: string | null
           created_at?: string | null
         }
         Update: {
@@ -96,6 +107,7 @@ export interface Database {
           event_id?: string
           title?: string
           cover_url?: string
+          category?: string | null
           created_at?: string | null
         }
         Relationships: [
@@ -246,6 +258,7 @@ export interface Database {
           car_photo_url: string | null
           event_id: string | null
           donation_choice: string | null
+          checked_in_at: string | null
           created_at: string | null
         }
         Insert: {
@@ -262,6 +275,7 @@ export interface Database {
           car_photo_url?: string | null
           event_id?: string | null
           donation_choice?: string | null
+          checked_in_at?: string | null
           created_at?: string | null
         }
         Update: {
@@ -278,6 +292,7 @@ export interface Database {
           car_photo_url?: string | null
           event_id?: string | null
           donation_choice?: string | null
+          checked_in_at?: string | null
           created_at?: string | null
         }
         Relationships: [
@@ -288,6 +303,27 @@ export interface Database {
             referencedColumns: ["id"]
           }
         ]
+      }
+      site_settings: {
+        Row: {
+          id: number
+          exclusive_cars_count: number
+          official_partners_count: number
+          updated_at: string | null
+        }
+        Insert: {
+          id?: number
+          exclusive_cars_count?: number
+          official_partners_count?: number
+          updated_at?: string | null
+        }
+        Update: {
+          id?: number
+          exclusive_cars_count?: number
+          official_partners_count?: number
+          updated_at?: string | null
+        }
+        Relationships: []
       }
     }
     Views: {

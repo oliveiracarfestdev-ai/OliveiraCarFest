@@ -30,7 +30,9 @@ export default async function ExpositoresPage() {
       .eq('status', 'aprovado');
       
     approvedLeads?.forEach(lead => {
-      approvedCounts[lead.event_id] = (approvedCounts[lead.event_id] || 0) + 1;
+      if (lead.event_id) {
+        approvedCounts[lead.event_id] = (approvedCounts[lead.event_id] || 0) + 1;
+      }
     });
   }
 

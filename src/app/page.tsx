@@ -78,7 +78,7 @@ export default async function Home() {
           <div className="absolute inset-0 z-0">
             <div 
               className="bg-cover bg-center w-full h-full object-cover" 
-              style={{ backgroundImage: "url('/fundo_home.png')" }}
+              style={{ backgroundImage: "url('/fundo_home.jpg')" }}
             ></div>
             <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background z-10"></div>
           </div>

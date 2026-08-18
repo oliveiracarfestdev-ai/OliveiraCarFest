@@ -11,7 +11,7 @@ export default function Sobre() {
           <div className="absolute inset-0 z-0">
             <div 
               className="w-full h-full bg-cover bg-center opacity-40 grayscale" 
-              style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDn2Bsa4nrjybGRMTGb02coDCQLP2mISkei7zLm3-LLE5oOWxbM14_C6CCnbj1NWgp7DwarCXNY0229PpsYcv_lXMi-1mAo6vtINNfB0v-JyJroi_Rm2FthYVw6ny66VZnM0Se7pwjxX_3nDMHiJP_VgPncQ8tJPPS41kArLhhdtX4Q9CAZ4omJsSJ-EW0XssDiqC5LywZ9mz9N0S5NbG3763AhLiMAre_59VJfHp38_pbjWx6YaDuvyw')" }}
+              style={{ backgroundImage: "url('/fundo_home.jpg')" }}
             ></div>
             {/* Gradient Overlay for readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>

@@ -17,8 +17,7 @@ export async function submitContactForm(data: ContactFormData) {
     const { error } = await supabase.from('contact_messages').insert({
       name: validatedData.name,
       email: validatedData.email,
-      subject: validatedData.subject || 'geral',
-      message: validatedData.message,
+      message: `[Assunto: ${validatedData.subject || 'geral'}]\n\n${validatedData.message}`,
     })
 
     if (error) {
