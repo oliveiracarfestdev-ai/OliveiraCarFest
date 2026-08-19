@@ -2,7 +2,7 @@ import { getPortalSession } from '@/app/actions/portal'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { PrintButton } from './print-button'
-import { QRCodeSVG } from 'qrcode.react'
+import { QRCodeCanvas } from 'qrcode.react'
 
 export default async function TicketPage({ params }: { params: { id: string } }) {
   const leads = await getPortalSession()
@@ -33,7 +33,7 @@ export default async function TicketPage({ params }: { params: { id: string } })
       </div>
 
       {/* O TICKET (Estilo de Impressão) */}
-      <div className="w-full max-w-2xl bg-white border-2 border-black rounded-xl overflow-hidden shadow-2xl print:shadow-none print:border-2 print:border-black relative">
+      <div id="ticket-container" className="w-full max-w-2xl bg-white border-2 border-black rounded-xl overflow-hidden shadow-2xl print:shadow-none print:border-2 print:border-black relative">
         <div className="absolute top-0 left-0 w-full h-4 bg-black print:bg-black"></div>
         
         <div className="p-10 mt-4">
@@ -49,7 +49,7 @@ export default async function TicketPage({ params }: { params: { id: string } })
                 <p className="font-heading text-3xl font-black uppercase text-black">Expositor</p>
               </div>
               <div className="mt-2 p-2 bg-white border-2 border-black inline-block">
-                <QRCodeSVG value={targetLead.id} size={80} level={"H"} />
+                <QRCodeCanvas value={targetLead.id} size={80} level={"H"} />
               </div>
             </div>
           </div>
