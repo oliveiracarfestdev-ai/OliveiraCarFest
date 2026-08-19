@@ -13,7 +13,7 @@ const exhibitorSchema = z.object({
   owner_name: z.string().min(2, 'Nome é obrigatório').transform(sanitizeHtml),
   email: z.string().email('Email inválido'),
   phone: z.string().min(10, 'WhatsApp é obrigatório'),
-  car_plate: z.string().min(7, 'Placa é obrigatória (ex: ABC1234)').transform(sanitizeHtml),
+  car_plate: z.string().min(7, 'Placa é obrigatória (ex: ABC1234)').transform(v => sanitizeHtml(v).toUpperCase().trim()),
   car_model: z.string().min(2, 'Modelo do carro é obrigatório').transform(sanitizeHtml),
   car_year: z.string().min(4, 'Ano é obrigatório').transform(sanitizeHtml),
   modifications: z.string().min(5, 'Descreva as modificações (mínimo 5 caracteres)').transform(sanitizeHtml),

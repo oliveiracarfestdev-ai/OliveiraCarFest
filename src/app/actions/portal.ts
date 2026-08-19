@@ -49,20 +49,30 @@ export async function loginToPortal(formData: FormData) {
 
   const supabase = await createClient()
 
-  // Buscar leads aprovados pela placa e telefone
+  // Buscar leads aprovados pela placa
   const { data: leads, error } = await supabase
     .from('exhibitor_leads')
     .select('id, status, car_plate, phone')
-    .eq('car_plate', car_plate.toUpperCase())
-    .eq('phone', phone)
+    .ilike('car_plate', car_plate.trim())
     .eq('status', 'aprovado')
 
   if (error || !leads || leads.length === 0) {
     return { error: 'Acesso não autorizado. Seu projeto ainda pode estar em análise, não foi encontrado ou as credenciais estão incorretas.' }
   }
 
-  // Criar cookie de sessão com a placa e telefone para buscar todas as inscrições aprovadas na view
-  const sessionData = JSON.stringify({ plate: car_plate.toUpperCase(), phone: phone })
+  // Encontrar o lead com o telefone correspondente (ignorando formatação)
+  const cleanInputPhone = phone.replace(/\D/g, '')
+  const matchedLead = leads.find(lead => {
+    const cleanDbPhone = lead.phone.replace(/\D/g, '')
+    return cleanDbPhone === cleanInputPhone
+  })
+
+  if (!matchedLead) {
+    return { error: 'Acesso não autorizado. Seu projeto ainda pode estar em análise, não foi encontrado ou as credenciais estão incorretas.' }
+  }
+
+  // Criar cookie de sessão com a placa e telefone exatos do banco
+  const sessionData = JSON.stringify({ plate: matchedLead.car_plate, phone: matchedLead.phone })
   const signedSession = signSession(sessionData)
   
   const cookieStore = await cookies()
