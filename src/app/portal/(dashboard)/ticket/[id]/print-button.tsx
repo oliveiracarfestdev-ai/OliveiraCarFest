@@ -1,10 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import html2canvas from 'html2canvas'
+import { useSearchParams } from 'next/navigation'
 
 export function PrintButton() {
   const [isGenerating, setIsGenerating] = useState(false)
+  const searchParams = useSearchParams()
+  const autoDownload = searchParams.get('download') === 'true'
 
   const handleDownload = async () => {
     const element = document.getElementById('ticket-container')
@@ -12,6 +15,9 @@ export function PrintButton() {
 
     setIsGenerating(true)
     try {
+      // Small delay to ensure any fonts/images are fully loaded before capturing
+      await new Promise(resolve => setTimeout(resolve, 500))
+
       const canvas = await html2canvas(element, {
         scale: 2, // High quality
         useCORS: true,
@@ -30,6 +36,13 @@ export function PrintButton() {
       } else {
         window.open(data)
       }
+
+      // Se foi download automático, podemos tentar fechar a aba após o download
+      if (autoDownload) {
+        setTimeout(() => {
+          window.close()
+        }, 1000)
+      }
     } catch (error) {
       console.error('Error generating ticket image:', error)
       alert('Não foi possível gerar a imagem do ticket.')
@@ -37,6 +50,12 @@ export function PrintButton() {
       setIsGenerating(false)
     }
   }
+
+  useEffect(() => {
+    if (autoDownload) {
+      handleDownload()
+    }
+  }, [autoDownload])
 
   return (
     <button 

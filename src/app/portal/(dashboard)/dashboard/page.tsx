@@ -104,7 +104,7 @@ export default async function PortalDashboard() {
                         <span className="material-symbols-outlined text-sm">qr_code_scanner</span>
                         Apresente na entrada
                       </p>
-                      <a href={`/portal/ticket/${lead.id}`} target="_blank" rel="noopener noreferrer" className="font-sans text-[10px] uppercase tracking-widest bg-primary text-black px-3 py-1.5 rounded-sm font-bold flex items-center gap-1 hover:bg-primary/80 transition-colors">
+                      <a href={`/portal/ticket/${lead.id}?download=true`} target="_blank" rel="noopener noreferrer" className="font-sans text-[10px] uppercase tracking-widest bg-primary text-black px-3 py-1.5 rounded-sm font-bold flex items-center gap-1 hover:bg-primary/80 transition-colors">
                         <span className="material-symbols-outlined text-[14px]">download</span>
                         Baixar Ticket
                       </a>
