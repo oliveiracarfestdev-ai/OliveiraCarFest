@@ -33,6 +33,14 @@ export function DownloadTicketButton({ lead }: DownloadTicketButtonProps) {
   const handleDownload = async () => {
     setIsGenerating(true)
 
+    // Extrair valores antes do template para garantir interpolação
+    const ownerName = lead.owner_name || 'N/A'
+    const carModel = lead.car_model || 'N/A'
+    const carYear = lead.car_year || 'N/A'
+    const carPlate = lead.car_plate || 'N/A'
+    const donationChoice = lead.donation_choice || ''
+    const leadId = lead.id
+
     try {
       // 1. Criar div temporário com o ticket para impressão
       const container = document.createElement('div')
@@ -41,6 +49,13 @@ export function DownloadTicketButton({ lead }: DownloadTicketButtonProps) {
       container.style.top = '0'
       container.style.width = '700px'
       container.style.zIndex = '-1'
+
+      const donationHTML = donationChoice ? `
+            <div style="margin-bottom:30px;padding:16px;background:#f5f5f5;border:1px solid #ddd;border-radius:4px;">
+              <p style="font-size:11px;text-transform:uppercase;color:#888;font-weight:700;margin:0 0 4px 0;">Acesso Solidário Obrigatório</p>
+              <p style="font-size:16px;font-weight:700;text-transform:uppercase;color:#000;margin:0;">Trazer no dia: ${donationChoice}</p>
+            </div>` : ''
+
       container.innerHTML = `
         <div id="temp-ticket" style="background:#fff;border:3px solid #000;border-radius:16px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;">
           <div style="height:12px;background:#000;"></div>
@@ -60,23 +75,19 @@ export function DownloadTicketButton({ lead }: DownloadTicketButtonProps) {
             <div style="display:flex;gap:40px;margin-bottom:30px;">
               <div>
                 <p style="font-size:11px;text-transform:uppercase;color:#888;font-weight:700;margin:0 0 4px 0;">Titular da Vaga</p>
-                <p style="font-size:22px;font-weight:700;text-transform:uppercase;color:#000;margin:0;">${lead.owner_name}</p>
+                <p style="font-size:22px;font-weight:700;text-transform:uppercase;color:#000;margin:0;">${ownerName}</p>
               </div>
               <div>
                 <p style="font-size:11px;text-transform:uppercase;color:#888;font-weight:700;margin:0 0 4px 0;">Veículo Confirmado</p>
-                <p style="font-size:22px;font-weight:700;text-transform:uppercase;color:#000;margin:0;">${lead.car_model} <span style="color:#888;font-size:16px;font-weight:400;">| ${lead.car_year}</span></p>
+                <p style="font-size:22px;font-weight:700;text-transform:uppercase;color:#000;margin:0;">${carModel} <span style="color:#888;font-size:16px;font-weight:400;">| ${carYear}</span></p>
               </div>
             </div>
-            ${lead.donation_choice ? `
-            <div style="margin-bottom:30px;padding:16px;background:#f5f5f5;border:1px solid #ddd;border-radius:4px;">
-              <p style="font-size:11px;text-transform:uppercase;color:#888;font-weight:700;margin:0 0 4px 0;">Acesso Solidário Obrigatório</p>
-              <p style="font-size:16px;font-weight:700;text-transform:uppercase;color:#000;margin:0;">Trazer no dia: ${lead.donation_choice}</p>
-            </div>` : ''}
+            ${donationHTML}
             <div style="display:flex;gap:40px;padding-top:30px;border-top:3px dashed #000;">
               <div>
                 <p style="font-size:11px;text-transform:uppercase;color:#888;font-weight:700;margin:0 0 4px 0;">Placa de Acesso</p>
                 <div style="display:inline-block;background:#fff;border:2px solid #000;padding:8px 16px;margin-top:4px;">
-                  <p style="font-family:monospace;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:6px;color:#000;margin:0;">${lead.car_plate}</p>
+                  <p id="plate-text" style="font-family:monospace;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:6px;color:#000;margin:0;">${carPlate}</p>
                 </div>
               </div>
               <div>
@@ -95,6 +106,12 @@ export function DownloadTicketButton({ lead }: DownloadTicketButtonProps) {
         </div>
       `
       document.body.appendChild(container)
+
+      // Garantir que a placa foi renderizada
+      const plateEl = container.querySelector('#plate-text')
+      if (plateEl) {
+        plateEl.textContent = carPlate
+      }
 
       // 2. Renderizar QR Code dentro do placeholder
       const qrPlaceholder = container.querySelector('#qr-placeholder')
