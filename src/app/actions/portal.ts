@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { rateLimit } from '@/lib/rate-limit'
@@ -47,7 +48,8 @@ export async function loginToPortal(formData: FormData) {
     return { error: 'Placa e WhatsApp são obrigatórios.' }
   }
 
-  const supabase = await createClient()
+  // Use the admin client to bypass RLS since the user is not authenticated yet
+  const supabase = createAdminClient()
 
   // Buscar leads aprovados pela placa
   const { data: leads, error } = await supabase
@@ -106,8 +108,8 @@ export async function getPortalSession() {
     
     const session = JSON.parse(verifiedData)
     
-    // Validate session against DB
-    const supabase = await createClient()
+    // Validate session against DB, using admin client to bypass RLS
+    const supabase = createAdminClient()
     const { data: leads } = await supabase
       .from('exhibitor_leads')
       .select('*, events(title, date, location)')
@@ -123,3 +125,4 @@ export async function getPortalSession() {
     return null
   }
 }
+
