@@ -19,20 +19,20 @@ export default async function PortalDashboard() {
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-green-500/5 rounded-full blur-[100px] z-0 pointer-events-none"></div>
         
         <div className="relative z-10 w-full max-w-4xl mx-auto px-4 py-16">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+          <div className="flex justify-between items-start mb-6 md:mb-12">
             <div>
-              <h1 className="font-heading text-4xl uppercase font-black text-foreground">
-                Bem-vindo, <span className="text-primary">{primaryLead.owner_name}</span>
+              <h1 className="font-heading text-3xl md:text-4xl uppercase font-black text-foreground leading-tight">
+                Bem-vindo, <br className="md:hidden" /><span className="text-primary">{primaryLead.owner_name}</span>
               </h1>
-              <p className="font-sans text-muted-foreground mt-2">
-                Você possui <strong className="text-green-500 uppercase tracking-widest">{leads.length}</strong> projeto(s) aprovado(s) pela curadoria.
+              <p className="font-sans text-muted-foreground mt-2 text-sm md:text-base">
+                Você possui <strong className="text-green-500 uppercase tracking-widest">{leads.length}</strong> projeto(s) aprovado(s).
               </p>
             </div>
             
-            <form action={logoutPortal} className="mt-6 md:mt-0">
-              <Button type="submit" variant="outline" className="border-border/50 text-muted-foreground hover:text-red-400">
-                <span className="material-symbols-outlined mr-2">logout</span>
-                Sair
+            <form action={logoutPortal} className="shrink-0 ml-4">
+              <Button type="submit" variant="ghost" size="sm" className="text-muted-foreground hover:text-red-400 p-2 h-auto">
+                <span className="material-symbols-outlined text-2xl">logout</span>
+                <span className="sr-only md:not-sr-only md:ml-2 font-bold uppercase tracking-widest text-xs">Sair</span>
               </Button>
             </form>
           </div>
