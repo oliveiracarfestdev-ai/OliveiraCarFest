@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { QRCodeSVG } from 'qrcode.react'
 
+export const dynamic = 'force-dynamic'
+
 export default async function PortalDashboard() {
   const leads = await getPortalSession()
 
@@ -18,7 +20,7 @@ export default async function PortalDashboard() {
       <div className="absolute inset-0 bg-background z-0"></div>
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-green-500/5 rounded-full blur-[100px] z-0 pointer-events-none"></div>
         
-        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 py-16">
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 py-8 md:py-16">
           <div className="flex justify-between items-start mb-6 md:mb-12">
             <div>
               <h1 className="font-heading text-3xl md:text-4xl uppercase font-black text-foreground leading-tight">
